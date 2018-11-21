@@ -1,6 +1,6 @@
-package ru.ifmo.db;
+package ru.ifmo.db.dataAccess;
 
-import ru.ifmo.db.DTO.FilmCostDTO;
+import ru.ifmo.db.dataAccess.DTO.FilmCostDTO;
 
 import java.util.List;
 

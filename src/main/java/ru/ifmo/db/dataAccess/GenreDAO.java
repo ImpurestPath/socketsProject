@@ -1,6 +1,6 @@
-package ru.ifmo.db;
+package ru.ifmo.db.dataAccess;
 
-import ru.ifmo.db.DTO.GenreDTO;
+import ru.ifmo.db.dataAccess.DTO.GenreDTO;
 
 import java.util.List;
 

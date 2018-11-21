@@ -1,7 +1,7 @@
-package ru.ifmo.db.SQL;
+package ru.ifmo.db.dataAccess.SQL;
 
-import ru.ifmo.db.ActorDAO;
-import ru.ifmo.db.DTO.ActorDTO;
+import ru.ifmo.db.dataAccess.ActorDAO;
+import ru.ifmo.db.dataAccess.DTO.ActorDTO;
 
 import java.util.List;
 

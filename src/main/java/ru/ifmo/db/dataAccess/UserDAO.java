@@ -1,7 +1,7 @@
-package ru.ifmo.db;
+package ru.ifmo.db.dataAccess;
 
 
-import ru.ifmo.db.DTO.UserDTO;
+import ru.ifmo.db.dataAccess.DTO.UserDTO;
 
 public interface UserDAO {
     UserDTO get(String userName);

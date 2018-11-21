@@ -1,4 +1,4 @@
-package ru.ifmo.db;
+package ru.ifmo.db.dataAccess;
 
 public interface ConnectionDAO {
 
