@@ -7,7 +7,7 @@ import java.util.List;
 public interface ActorDAO {
     List<ActorDTO> getAll(int idFilm);
     ActorDTO get(int id);
-    int add(ActorDAO actorDAO);
-    void update(int id, ActorDAO actorDAO);
+    int add(ActorDTO actorDTO);
+    void update(int id, ActorDTO actorDAO);
     void delete(int id);
 }

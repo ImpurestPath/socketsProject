@@ -8,7 +8,7 @@ public class SubscriptionCostDTO implements Serializable {
     private final double cost;
     private final int idSubscription;
 
-    public SubscriptionCostDTO(int id, int duration, double cost, int idSubscription) {
+    public SubscriptionCostDTO( int id,int idSubscription, int duration, double cost) {
         this.id = id;
         this.duration = duration;
         this.cost = cost;
