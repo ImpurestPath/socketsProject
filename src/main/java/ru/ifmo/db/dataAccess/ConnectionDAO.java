@@ -2,7 +2,7 @@ package ru.ifmo.db.dataAccess;
 
 import ru.ifmo.db.dataAccess.DTO.*;
 
-public interface ConnectionDAO {
+public interface ConnectionDAO  {
     int addFilm(FilmDTO dto);
     void addFilmGenre(int idFilm, int idGenre);
     int addFilmCost(FilmCostDTO dto);
