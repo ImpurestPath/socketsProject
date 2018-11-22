@@ -2,6 +2,8 @@ package ru.ifmo.db.dataAccess;
 
 import ru.ifmo.db.dataAccess.DTO.*;
 
+import java.util.List;
+
 public interface ConnectionDAO  {
     int addFilm(FilmDTO dto);
     void addFilmGenre(int idFilm, int idGenre);
@@ -34,4 +36,20 @@ public interface ConnectionDAO  {
     void deleteSubscription(int id);
     void deleteSubscriptionCost(int id);
     void deleteSubscriptionFilm(int idSubscription, int idFilm);
+    List<FilmDTO> getAllFilms();
+    FilmDTO getFilm(int id);
+    List<FilmCostDTO> getAllFilmCosts(int idFilm);
+    FilmCostDTO getFilmCost(int idFilmCost);
+    List<Integer> getFilmSubscriptions(int idFilm);
+    List<Integer> getFilmActors(int idFilm);
+    List<Integer> getFilmGenres(int idFilm);
+    ActorDTO getActor(int id);
+    GenreDTO getGenre(int id);
+    List<SubscriptionDTO> getAllSubscriptions();
+    SubscriptionDTO getSubscription(int id);
+    List<SubscriptionCostDTO> getAllSubscriptionCosts(int idSubscription);
+    SubscriptionCostDTO getSubscriptionCost(int idSubscriptionCost);
+    List<Integer> getSubscriptionFilms(int idSubscription);
+    UserDTO getUser(String userName);
+
 }

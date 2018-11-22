@@ -48,6 +48,34 @@ public class SQLSubscription implements SubscriptionDAO {
         }
     }
 
+    @Override
+    public List<SubscriptionCostDTO> getAllCosts(int idSubscription) {
+        return subscriptionCostDAO.getAll(idSubscription);
+    }
+
+    @Override
+    public SubscriptionCostDTO getCost(int idCost) {
+        return subscriptionCostDAO.get(idCost);
+    }
+
+    @Override
+    public List<Integer> getFilms(int idSubscription) {
+        try (PreparedStatement preparedStatement =
+                     connection.prepareStatement(
+                             "SELECT idFilm FROM [Film By Subscription] WHERE idSubscription = ?")) {
+            preparedStatement.setInt(1, idSubscription);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            List<Integer> integers = new ArrayList<>();
+            while (resultSet.next()){
+                integers.add(resultSet.getInt(1));
+            }
+            return integers;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int add(SubscriptionDTO subscriptionDTO) {
         try(PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO Subscription(Name) VALUES (?)")){

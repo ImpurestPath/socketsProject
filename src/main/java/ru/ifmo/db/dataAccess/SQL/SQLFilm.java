@@ -1,5 +1,6 @@
 package ru.ifmo.db.dataAccess.SQL;
 
+import ru.ifmo.db.dataAccess.DTO.ActorDTO;
 import ru.ifmo.db.dataAccess.DTO.FilmCostDTO;
 import ru.ifmo.db.dataAccess.DTO.FilmDTO;
 import ru.ifmo.db.dataAccess.FilmCostDAO;
@@ -8,6 +9,7 @@ import ru.ifmo.db.dataAccess.FilmDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +61,64 @@ public class SQLFilm implements FilmDAO {
         }
     }
 
+    @Override
+    public List<FilmCostDTO> getAllCosts(int idFilm) {
+        return filmCostDAO.getAll(idFilm);
+    }
+
+    @Override
+    public FilmCostDTO getCost(int idCost) {
+        return filmCostDAO.get(idCost);
+    }
+
+    @Override
+    public List<Integer> getActors(int idFilm) {
+        try (PreparedStatement preparedStatement =
+                     connection.prepareStatement(
+                             "SELECT idActor FROM [Film Actor] WHERE idFilm = ?")) {
+            preparedStatement.setInt(1, idFilm);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return getIntegersFromSelect(resultSet);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    private List<Integer> getIntegersFromSelect(ResultSet resultSet) throws SQLException {
+        List<Integer> integers = new ArrayList<>();
+        while (resultSet.next()){
+            integers.add(resultSet.getInt(1));
+        }
+        return integers;
+    }
+    @Override
+    public List<Integer> getGenres(int idFilm) {
+        try (PreparedStatement preparedStatement =
+                     connection.prepareStatement(
+                             "SELECT idGenre FROM [Film Genre] WHERE idFilm = ?")) {
+            preparedStatement.setInt(1, idFilm);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return getIntegersFromSelect(resultSet);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public List<Integer> getSubscriptions(int idFilm) {
+        try (PreparedStatement preparedStatement =
+                     connection.prepareStatement(
+                             "SELECT idSubscription FROM [Film By Subscription] WHERE idFilm = ?")) {
+            preparedStatement.setInt(1, idFilm);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return getIntegersFromSelect(resultSet);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int add(FilmDTO filmDTO) {
         try (PreparedStatement preparedStatement =
                      connection.prepareStatement("INSERT INTO Film(Name,Year,Reggiseur,Rating) VALUES (?,?,?,?)")) {
@@ -67,7 +127,7 @@ public class SQLFilm implements FilmDAO {
             preparedStatement.setString(3, filmDTO.getReggiseur());
             preparedStatement.setShort(4, filmDTO.getRating());
             preparedStatement.execute();
-            return connection.createStatement().executeQuery("SELECT last_insert_rowid()").getInt(1);
+            return connection.createStatement().executeQuery("SELECT SCOPE_IDENTITY()").getInt(1);
         } catch (Exception e) {
             e.printStackTrace();
             return -1;

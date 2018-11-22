@@ -5,6 +5,7 @@ import ru.ifmo.db.dataAccess.DTO.*;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.List;
 
 public class SQLConnection implements ConnectionDAO {
     private FilmDAO filmDAO;
@@ -16,11 +17,11 @@ public class SQLConnection implements ConnectionDAO {
     private UserDAO userDAO;
 
     public SQLConnection() {
-        String connectionUrl = "jdbc:sqlserver://127.0.0.1:1433;databaseName=OnlineCinema;user=user;password=user";
+        String connectionUrl = "jdbc:sqlserver://127.0.0.1:1433;databaseName=OnlineCinema;user=user2;password=user";
         try {
             // Load SQL Server JDBC driver and establish connection.
             //System.out.print("Connecting to SQL Server ... ");
-            //Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             //DriverManager.registerDriver(new com.microsoft.sqlserver.jdbc.SQLServerDriver());
             Connection connection = DriverManager.getConnection(connectionUrl);
             filmDAO = new SQLFilm(connection);
@@ -190,5 +191,80 @@ public class SQLConnection implements ConnectionDAO {
     @Override
     public void deleteSubscriptionFilm(int idSubscription, int idFilm) {
 
+    }
+
+    @Override
+    public List<FilmDTO> getAllFilms() {
+        return filmDAO.getAll();
+    }
+
+    @Override
+    public FilmDTO getFilm(int id) {
+        return filmDAO.get(id);
+    }
+
+    @Override
+    public List<FilmCostDTO> getAllFilmCosts(int idFilm) {
+        return filmDAO.getAllCosts(idFilm);
+    }
+
+    @Override
+    public FilmCostDTO getFilmCost(int idFilmCost) {
+        return filmDAO.getCost(idFilmCost);
+    }
+
+    @Override
+    public List<Integer> getFilmSubscriptions(int idFilm) {
+        return filmDAO.getSubscriptions(idFilm);
+    }
+
+    @Override
+    public List<Integer> getFilmActors(int idFilm) {
+        return filmDAO.getActors(idFilm);
+    }
+
+    @Override
+    public ActorDTO getActor(int id) {
+        return actorDAO.get(id);
+    }
+
+    @Override
+    public List<Integer> getFilmGenres(int idFilm) {
+        return filmDAO.getGenres(idFilm);
+    }
+
+    @Override
+    public GenreDTO getGenre(int id) {
+        return genreDAO.get(id);
+    }
+
+    @Override
+    public List<SubscriptionDTO> getAllSubscriptions() {
+        return subscriptionDAO.getAll();
+    }
+
+    @Override
+    public SubscriptionDTO getSubscription(int id) {
+        return subscriptionDAO.get(id);
+    }
+
+    @Override
+    public List<SubscriptionCostDTO> getAllSubscriptionCosts(int idSubscription) {
+        return subscriptionDAO.getAllCosts(idSubscription);
+    }
+
+    @Override
+    public SubscriptionCostDTO getSubscriptionCost(int idSubscriptionCost) {
+        return subscriptionDAO.getCost(idSubscriptionCost);
+    }
+
+    @Override
+    public List<Integer> getSubscriptionFilms(int idSubscription) {
+        return subscriptionDAO.getFilms(idSubscription);
+    }
+
+    @Override
+    public UserDTO getUser(String userName) {
+        return userDAO.get(userName);
     }
 }

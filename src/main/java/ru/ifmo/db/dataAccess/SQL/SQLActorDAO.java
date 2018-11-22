@@ -50,7 +50,7 @@ public class SQLActorDAO implements ActorDAO {
                     connection.prepareStatement("INSERT INTO Actor(Name) VALUES (?)")){
             preparedStatement.setString(1,actorDTO.getName());
             preparedStatement.execute();
-            return connection.createStatement().executeQuery("SELECT last_insert_rowid()").getInt(1);
+            return connection.createStatement().executeQuery("SELECT SCOPE_IDENTITY()").getInt(1);
         }catch (Exception e){
             e.printStackTrace();
             return -1;

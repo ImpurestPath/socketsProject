@@ -1,5 +1,6 @@
 package ru.ifmo.db.dataAccess;
 
+import ru.ifmo.db.dataAccess.DTO.ActorDTO;
 import ru.ifmo.db.dataAccess.DTO.FilmCostDTO;
 import ru.ifmo.db.dataAccess.DTO.FilmDTO;
 
@@ -9,6 +10,15 @@ public interface FilmDAO {
     List<FilmDTO> getAll();
 
     FilmDTO get(int id);
+
+    List<FilmCostDTO> getAllCosts(int idFilm);
+
+    FilmCostDTO getCost(int idCost);
+
+    List<Integer> getActors(int idFilm);
+
+    List<Integer> getGenres(int idFilm);
+    List<Integer> getSubscriptions(int idFilm);
 
     int add(FilmDTO filmDTO);
 

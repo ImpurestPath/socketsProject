@@ -2,7 +2,7 @@ package ru.ifmo.db.dataAccess;
 
 import java.io.Serializable;
 
-public enum Command implements Serializable {
+public enum DataAccessCommands implements Serializable {
     ADD_FILM,
     ADD_FILM_GENRE,
     ADD_FILM_COST,
@@ -34,5 +34,22 @@ public enum Command implements Serializable {
     DELETE_SUBSCRIPTION,
     DELETE_SUBSCRIPTION_COST,
     DELETE_SUBSCRIPTION_FILM,
-    FINISHED
+    GET_ALL_FILMS,
+    GET_FILM,
+    GET_ALL_FILM_COSTS,
+    GET_FILM_COST,
+    GET_FILM_SUBSCRIPTIONS,
+    GET_FILM_ACTORS,
+    GET_FILM_GENRES,
+    GET_ACTOR,
+    GET_GENRE,
+    GET_ALL_SUBSCRIPTIONS,
+    GET_SUBSCRIPTION,
+    GET_ALL_SUBSCRIPTION_COSTS,
+    GET_SUBSCRIPTION_COST,
+    GET_SUBSCRIPTION_FILMS,
+    GET_USER,
+    FINISHED,
+    ERROR,
+    CLOSE_CONNECTION
 }

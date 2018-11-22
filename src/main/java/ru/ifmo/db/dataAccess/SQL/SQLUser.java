@@ -33,7 +33,7 @@ public class SQLUser implements UserDAO {
             preparedStatement.setString(1, userDTO.getUserName());
             preparedStatement.setDouble(2, userDTO.getBalance());
             preparedStatement.execute();
-            return connection.createStatement().executeQuery("SELECT last_insert_rowid()").getInt(1);
+            return connection.createStatement().executeQuery("SELECT SCOPE_IDENTITY()").getInt(1);
         } catch (Exception e) {
             e.printStackTrace();
             return -1;

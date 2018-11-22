@@ -63,7 +63,7 @@ public class SQLFilmCost implements FilmCostDAO {
             preparedStatement.setInt(2,filmCostDTO.getDuration());
             preparedStatement.setDouble(3,filmCostDTO.getCost());
             preparedStatement.execute();
-            return connection.createStatement().executeQuery("SELECT last_insert_rowid()").getInt(1);
+            return connection.createStatement().executeQuery("SELECT SCOPE_IDENTITY()").getInt(1);
         }catch (Exception e){
             e.printStackTrace();
             return -1;

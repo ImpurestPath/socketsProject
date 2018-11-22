@@ -1,6 +1,9 @@
 package ru.ifmo.db.domain;
 
 public class FilmManager {
-    FilmManager(){}
+    private dataAccessClient dataAccessClient;
+    FilmManager(){
+
+    }
 
 }
