@@ -1,6 +1,6 @@
-package ru.ifmo.db.domain;
+package ru.ifmo.db.domain.guiServices;
 
-public enum DomainCommands {
+public enum Commands {
     ADD_FILM,
     ADD_ACTOR,
     ADD_GENRE,

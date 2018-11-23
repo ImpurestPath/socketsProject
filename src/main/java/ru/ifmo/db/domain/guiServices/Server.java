@@ -1,4 +1,4 @@
-package ru.ifmo.db.domain;
+package ru.ifmo.db.domain.guiServices;
 
 import java.net.ServerSocket;
 import java.net.Socket;

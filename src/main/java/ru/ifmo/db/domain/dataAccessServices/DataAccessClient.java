@@ -9,13 +9,13 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.List;
 
-import static ru.ifmo.db.domain.dataAccessServices.DataAccessCommands.*;
+import static ru.ifmo.db.domain.dataAccessServices.Commands.*;
 
-public class dataAccessClient {
+public class DataAccessClient {
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
-    dataAccessClient() {
+    DataAccessClient() {
         int serverPort = 3567; // здесь обязательно нужно указать порт к которому привязывается сервер.
         String address = "127.0.0.1"; // это IP-адрес компьютера, где исполняется наша серверная программа.
         // Здесь указан адрес того самого компьютера где будет исполняться и клиент.
@@ -48,7 +48,7 @@ public class dataAccessClient {
         } else return -1;
     }
 
-    private void sendTwoInt(DataAccessCommands command, int i1, int i2) {
+    private void sendTwoInt(Commands command, int i1, int i2) {
         try {
             out.writeObject(command);
             out.flush();
@@ -64,7 +64,7 @@ public class dataAccessClient {
         }
     }
 
-    <T extends Serializable> void sendIntAndObject(DataAccessCommands command, int id, T object) {
+    <T extends Serializable> void sendIntAndObject(Commands command, int id, T object) {
         try {
             out.writeObject(command);
             out.flush();
@@ -80,7 +80,7 @@ public class dataAccessClient {
         }
     }
 
-    private <T extends Serializable> int sendObject(DataAccessCommands command, T object) {
+    private <T extends Serializable> int sendObject(Commands command, T object) {
         try {
             out.writeObject(command);
             out.flush();
@@ -97,7 +97,7 @@ public class dataAccessClient {
         }
     }
 
-    private void sendInt(DataAccessCommands command, int i) {
+    private void sendInt(Commands command, int i) {
         try {
             out.writeObject(command);
             out.flush();
@@ -112,7 +112,7 @@ public class dataAccessClient {
         }
     }
 
-    private List<Integer> readIntegers(DataAccessCommands getSubscriptionFilms, int id) {
+    private List<Integer> readIntegers(Commands getSubscriptionFilms, int id) {
         try {
             out.writeObject(getSubscriptionFilms);
             out.flush();

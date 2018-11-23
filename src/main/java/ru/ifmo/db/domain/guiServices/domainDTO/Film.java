@@ -1,4 +1,4 @@
-package ru.ifmo.db.domain.domainDTO;
+package ru.ifmo.db.domain.guiServices.domainDTO;
 
 import java.util.List;
 

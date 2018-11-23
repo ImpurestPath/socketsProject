@@ -20,7 +20,7 @@ public class ClientThread extends Thread {
             out = new ObjectOutputStream(socket.getOutputStream());
             out.flush();
             in = new ObjectInputStream(socket.getInputStream());
-            DataAccessCommands command;
+            Commands command;
             int id;
             int idFilm;
             int idActor;
@@ -36,8 +36,8 @@ public class ClientThread extends Thread {
             SubscriptionCostDTO subscriptionCostDTO;
             String username;
             while (true) {
-                command = (DataAccessCommands) in.readObject(); // ожидаем пока клиент пришлет строку текста.
-                out.writeObject(DataAccessCommands.FINISHED);
+                command = (Commands) in.readObject(); // ожидаем пока клиент пришлет строку текста.
+                out.writeObject(Commands.FINISHED);
                 switch (command) {
                     case ADD_FILM:
                         filmDTO = (FilmDTO) in.readObject();
@@ -252,7 +252,7 @@ public class ClientThread extends Thread {
                         in.close();
                         out.close();
                 }
-                out.writeObject(DataAccessCommands.FINISHED);
+                out.writeObject(Commands.FINISHED);
                 out.flush(); // заставляем поток закончить передачу данных.
                 System.out.println("Waiting for the next line...");
             }

@@ -1,8 +1,8 @@
-package ru.ifmo.db.dataAccess;
+package ru.ifmo.db.domain.dataAccessServices;
 
 import java.io.Serializable;
 
-public enum DataAccessCommands implements Serializable {
+public enum Commands implements Serializable {
     ADD_FILM,
     ADD_FILM_GENRE,
     ADD_FILM_COST,

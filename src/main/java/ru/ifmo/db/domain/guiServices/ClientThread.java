@@ -1,4 +1,4 @@
-package ru.ifmo.db.domain;
+package ru.ifmo.db.domain.guiServices;
 
 public class ClientThread extends Thread {
     ClientThread(){
