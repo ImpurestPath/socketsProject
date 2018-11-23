@@ -1,27 +1,22 @@
-package ru.ifmo.db.domain.dataAccessDTO;
+package ru.ifmo.db.domain.dataAccessServices.dataAccessDTO;
 
 import java.io.Serializable;
 
-public class FilmCostDTO implements Serializable {
+public class SubscriptionCostDTO implements Serializable {
     private final int id;
-    private final int idFilm;
     private final int duration;
     private final double cost;
+    private final int idSubscription;
 
-
-    public FilmCostDTO(int id, int idFilm, int duration, double cost) {
+    public SubscriptionCostDTO( int id,int idSubscription, int duration, double cost) {
         this.id = id;
-        this.idFilm = idFilm;
         this.duration = duration;
         this.cost = cost;
+        this.idSubscription = idSubscription;
     }
 
     public int getId() {
         return id;
-    }
-
-    public int getIdFilm() {
-        return idFilm;
     }
 
     public int getDuration() {
@@ -30,5 +25,9 @@ public class FilmCostDTO implements Serializable {
 
     public double getCost() {
         return cost;
+    }
+
+    public int getIdSubscription() {
+        return idSubscription;
     }
 }

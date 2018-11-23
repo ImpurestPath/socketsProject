@@ -1,15 +1,17 @@
-package ru.ifmo.db.domain.dataAccessDTO;
+package ru.ifmo.db.domain.dataAccessServices.dataAccessDTO;
 
 import java.io.Serializable;
 
-public class SubscriptionDTO implements Serializable {
+public class GenreDTO implements Serializable {
     private final int id;
     private final String name;
-    public SubscriptionDTO(int id, String name){
+
+    public GenreDTO(int id, String name) {
         this.id = id;
         this.name = name;
     }
-    SubscriptionDTO(String name){
+
+    public GenreDTO(String name) {
         this.id = -1;
         this.name = name;
     }

@@ -1,7 +1,5 @@
 package ru.ifmo.db.domain.domainDTO;
 
-import ru.ifmo.db.domain.dataAccessDTO.FilmCostDTO;
-
 import java.util.List;
 
 public class Film {

@@ -1,4 +1,4 @@
-package ru.ifmo.db.domain.dataAccessDTO;
+package ru.ifmo.db.domain.dataAccessServices.dataAccessDTO;
 
 import java.io.Serializable;
 

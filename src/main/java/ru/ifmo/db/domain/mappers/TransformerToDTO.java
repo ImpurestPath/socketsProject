@@ -1,6 +1,6 @@
 package ru.ifmo.db.domain.mappers;
 
-import ru.ifmo.db.domain.dataAccessDTO.FilmDTO;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmDTO;
 import ru.ifmo.db.domain.domainDTO.Film;
 
 public class TransformerToDTO {
