@@ -1,8 +1,9 @@
 package ru.ifmo.db.dataAccess;
 
-import ru.ifmo.db.dataAccess.DTO.ActorDTO;
-import ru.ifmo.db.dataAccess.DTO.FilmCostDTO;
-import ru.ifmo.db.dataAccess.DTO.FilmDTO;
+
+
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmDTO;
 
 import java.util.List;
 

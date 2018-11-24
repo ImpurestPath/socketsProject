@@ -1,44 +1,34 @@
 package ru.ifmo.db.domain.guiServices.domainDTO;
 
-import java.util.List;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 
+import java.util.List;
 public class Film {
-    private class FilmCost{
-        private final int id;
-        private final int idFilm;
-        private final int duration;
-        private final double cost;
-        public FilmCost(int id, int idFilm, int duration, double cost) {
-            this.id = id;
-            this.idFilm = idFilm;
-            this.duration = duration;
-            this.cost = cost;
-        }
-    }
+
     private final int id;
     private final String name;
     private final short year;
-    private final String reggiseur;
+    private final String regisseur;
     private final short rating;
     private final List<Integer> genres;
     private final List<Integer> actors;
-    private final List<FilmCost> costs;
+    private final List<FilmCostDTO> costs;
     private final List<Integer> subscriptions;
 
     public Film(
             int id,
             String name,
             short year,
-            String reggiseur,
+            String regisseur,
             short rating,
             List<Integer> genres,
             List<Integer> actors,
-            List<FilmCost> costs,
+            List<FilmCostDTO> costs,
             List<Integer> subscriptions) {
         this.id = id;
         this.name = name;
         this.year = year;
-        this.reggiseur = reggiseur;
+        this.regisseur = regisseur;
         this.rating = rating;
         this.genres = genres;
         this.actors = actors;
@@ -58,8 +48,8 @@ public class Film {
         return year;
     }
 
-    public String getReggiseur() {
-        return reggiseur;
+    public String getRegisseur() {
+        return regisseur;
     }
 
     public short getRating() {
@@ -74,7 +64,7 @@ public class Film {
         return actors;
     }
 
-    public List<FilmCost> getCosts() {
+    public List<FilmCostDTO> getCosts() {
         return costs;
     }
 

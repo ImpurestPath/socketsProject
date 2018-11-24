@@ -1,15 +1,15 @@
 package ru.ifmo.db.domain.guiServices;
 
-import ru.ifmo.db.domain.dataAccessServices.DataAccessClient;
+import ru.ifmo.db.domain.dataAccessServices.Client;
 import ru.ifmo.db.domain.guiServices.domainDTO.Film;
 
 public class FilmManager {
-    private final DataAccessClient dataAccessClient;
-    FilmManager(DataAccessClient dataAccessClient){
-        this.dataAccessClient = dataAccessClient;
+    private final Client client;
+    FilmManager(Client client){
+        this.client = client;
     }
     public Film get(int id){
-        //DataAccessClient
+        //Client
         return null;
     }
 

@@ -1,6 +1,8 @@
 package ru.ifmo.db.dataAccess;
 
-import ru.ifmo.db.dataAccess.DTO.GenreDTO;
+
+
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.GenreDTO;
 
 import java.util.List;
 

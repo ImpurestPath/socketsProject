@@ -1,6 +1,7 @@
 package ru.ifmo.db.dataAccess;
 
-import ru.ifmo.db.dataAccess.DTO.SubscriptionCostDTO;
+
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
 
 import java.util.List;
 

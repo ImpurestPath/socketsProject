@@ -1,6 +1,8 @@
 package ru.ifmo.db.dataAccess;
 
-import ru.ifmo.db.dataAccess.DTO.*;
+
+import ru.ifmo.db.domain.dataAccessServices.Commands;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.*;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -36,8 +38,8 @@ public class ClientThread extends Thread {
             SubscriptionCostDTO subscriptionCostDTO;
             String username;
             while (true) {
-                command = (Commands) in.readObject(); // ожидаем пока клиент пришлет строку текста.
-                out.writeObject(Commands.FINISHED);
+                command = (Commands) in.readObject();
+                //out.writeObject(Commands.FINISHED);
                 switch (command) {
                     case ADD_FILM:
                         filmDTO = (FilmDTO) in.readObject();
@@ -191,6 +193,7 @@ public class ClientThread extends Thread {
                         break;
                     case GET_ALL_FILMS:
                         out.writeObject(connection.getAllFilms());
+                        out.flush();
                         break;
                     case GET_FILM:
                         id = in.readInt();
@@ -246,6 +249,7 @@ public class ClientThread extends Thread {
                     case GET_USER:
                         username = in.readUTF();
                         out.writeObject(connection.getUser(username));
+                        out.flush();
                         break;
                     case CLOSE_CONNECTION:
                         socket.close();

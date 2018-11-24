@@ -1,7 +1,7 @@
 package ru.ifmo.db.dataAccess;
 
 
-import ru.ifmo.db.dataAccess.DTO.*;
+
 import ru.ifmo.db.dataAccess.SQL.SQLConnection;
 
 import java.io.ObjectInputStream;

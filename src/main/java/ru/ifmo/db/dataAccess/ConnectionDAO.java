@@ -1,10 +1,13 @@
 package ru.ifmo.db.dataAccess;
 
-import ru.ifmo.db.dataAccess.DTO.*;
+
+
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.*;
 
 import java.util.List;
 
 public interface ConnectionDAO  {
+    //TODO delete id from update
     int addFilm(FilmDTO dto);
     void addFilmGenre(int idFilm, int idGenre);
     int addFilmCost(FilmCostDTO dto);

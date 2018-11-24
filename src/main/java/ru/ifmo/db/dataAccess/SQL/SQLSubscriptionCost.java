@@ -1,7 +1,7 @@
 package ru.ifmo.db.dataAccess.SQL;
 
-import ru.ifmo.db.dataAccess.DTO.SubscriptionCostDTO;
 import ru.ifmo.db.dataAccess.SubscriptionCostDAO;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

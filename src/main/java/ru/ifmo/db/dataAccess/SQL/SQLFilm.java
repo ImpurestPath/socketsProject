@@ -1,10 +1,10 @@
 package ru.ifmo.db.dataAccess.SQL;
 
-import ru.ifmo.db.dataAccess.DTO.ActorDTO;
-import ru.ifmo.db.dataAccess.DTO.FilmCostDTO;
-import ru.ifmo.db.dataAccess.DTO.FilmDTO;
+
 import ru.ifmo.db.dataAccess.FilmCostDAO;
 import ru.ifmo.db.dataAccess.FilmDAO;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmDTO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

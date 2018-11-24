@@ -1,7 +1,8 @@
 package ru.ifmo.db.dataAccess.SQL;
 
 import ru.ifmo.db.dataAccess.ActorDAO;
-import ru.ifmo.db.dataAccess.DTO.ActorDTO;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.ActorDTO;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

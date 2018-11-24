@@ -1,7 +1,8 @@
 package ru.ifmo.db.dataAccess.SQL;
 
 import ru.ifmo.db.dataAccess.*;
-import ru.ifmo.db.dataAccess.DTO.*;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.*;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -17,7 +18,7 @@ public class SQLConnection implements ConnectionDAO {
     private UserDAO userDAO;
 
     public SQLConnection() {
-        String connectionUrl = "jdbc:sqlserver://127.0.0.1:1433;databaseName=OnlineCinema;user=user2;password=user";
+        String connectionUrl = "jdbc:sqlserver://192.168.43.2:1433;databaseName=OnlineCinema;user=user2;password=user";
         try {
             // Load SQL Server JDBC driver and establish connection.
             //System.out.print("Connecting to SQL Server ... ");

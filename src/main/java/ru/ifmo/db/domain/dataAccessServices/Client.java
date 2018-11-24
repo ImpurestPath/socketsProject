@@ -11,11 +11,11 @@ import java.util.List;
 
 import static ru.ifmo.db.domain.dataAccessServices.Commands.*;
 
-public class DataAccessClient {
+public class Client {
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
-    DataAccessClient() {
+    public Client() {
         int serverPort = 3567; // здесь обязательно нужно указать порт к которому привязывается сервер.
         String address = "127.0.0.1"; // это IP-адрес компьютера, где исполняется наша серверная программа.
         // Здесь указан адрес того самого компьютера где будет исполняться и клиент.
@@ -129,132 +129,132 @@ public class DataAccessClient {
         }
     }
 
-    int addFilm(FilmDTO dto) {
+    public int addFilm(FilmDTO dto) {
         return addObject(dto);
     }
 
-    void addFilmGenre(int idFilm, int idGenre) {
+    public void addFilmGenre(int idFilm, int idGenre) {
         sendTwoInt(ADD_FILM_GENRE, idFilm, idGenre);
     }
 
-    int addFilmCost(FilmCostDTO dto) {
+    public int addFilmCost(FilmCostDTO dto) {
         return addObject(dto);
     }
 
-    void addFilmActor(int idFilm, int idActor) {
+    public void addFilmActor(int idFilm, int idActor) {
         sendTwoInt(ADD_FILM_ACTOR, idFilm, idActor);
     }
 
-    int addActor(ActorDTO dto) {
+    public int addActor(ActorDTO dto) {
         return addObject(dto);
     }
 
-    int addGenre(GenreDTO dto) {
+    public int addGenre(GenreDTO dto) {
         return addObject(dto);
     }
 
-    int addUser(UserDTO dto) {
+    public int addUser(UserDTO dto) {
         return addObject(dto);
     }
 
-    void addUserSubscription(int idUser, int idSubscriptionCost) {
+    public void addUserSubscription(int idUser, int idSubscriptionCost) {
         sendTwoInt(ADD_USER_SUBSCRIPTION, idUser, idSubscriptionCost);
     }
 
-    void addUserFilm(int idUser, int idFilmCost) {
+    public void addUserFilm(int idUser, int idFilmCost) {
         sendTwoInt(ADD_USER_FILM, idUser, idFilmCost);
     }
 
-    int addSubscription(SubscriptionDTO dto) {
+    public int addSubscription(SubscriptionDTO dto) {
         return addObject(dto);
     }
 
-    int addSubscriptionCost(SubscriptionCostDTO dto) {
+    public int addSubscriptionCost(SubscriptionCostDTO dto) {
         return addObject(dto);
     }
 
-    void addSubscriptionFilm(int idSubscription, int idFilm) {
+    public void addSubscriptionFilm(int idSubscription, int idFilm) {
         sendTwoInt(ADD_SUBSCRIPTION_FILM, idSubscription, idFilm);
     }
 
-    void updateFilm(int id, FilmDTO filmDTO) {
+    public void updateFilm(int id, FilmDTO filmDTO) {
         sendIntAndObject(UPDATE_FILM, id, filmDTO);
     }
 
-    void updateFilmCost(int id, FilmCostDTO dto) {
+    public void updateFilmCost(int id, FilmCostDTO dto) {
         sendIntAndObject(UPDATE_FILM_COST, id, dto);
     }
 
-    void updateActor(int id, ActorDTO dto) {
+    public void updateActor(int id, ActorDTO dto) {
         sendIntAndObject(UPDATE_ACTOR, id, dto);
     }
 
-    void updateGenre(int id, GenreDTO dto) {
+    public void updateGenre(int id, GenreDTO dto) {
         sendIntAndObject(UPDATE_GENRE, id, dto);
     }
 
-    void updateUser(int id, UserDTO dto) {
+    public void updateUser(int id, UserDTO dto) {
         sendIntAndObject(UPDATE_USER, id, dto);
     }
 
-    void updateSubscription(int id, SubscriptionDTO dto) {
+    public void updateSubscription(int id, SubscriptionDTO dto) {
         sendIntAndObject(UPDATE_SUBSCRIPTION, id, dto);
     }
 
-    void updateSubscriptionCost(int id, SubscriptionCostDTO dto) {
+    public void updateSubscriptionCost(int id, SubscriptionCostDTO dto) {
         sendIntAndObject(UPDATE_SUBSCRIPTION_COST, id, dto);
     }
 
-    void deleteFilm(int id) {
+    public void deleteFilm(int id) {
         sendInt(DELETE_FILM, id);
     }
 
-    void deleteFilmGenre(int idFilm, int idGenre) {
+    public void deleteFilmGenre(int idFilm, int idGenre) {
         sendTwoInt(DELETE_FILM_GENRE, idFilm, idGenre);
     }
 
-    void deleteFilmCost(int id) {
+    public void deleteFilmCost(int id) {
         sendInt(DELETE_FILM_COST, id);
     }
 
-    void deleteFilmActor(int idFilm, int idActor) {
+    public void deleteFilmActor(int idFilm, int idActor) {
         sendTwoInt(DELETE_FILM_ACTOR, idFilm, idActor);
     }
 
-    void deleteActor(int id) {
+    public void deleteActor(int id) {
         sendInt(DELETE_ACTOR, id);
     }
 
-    void deleteGenre(int id) {
+    public void deleteGenre(int id) {
         sendInt(DELETE_GENRE, id);
     }
 
-    void deleteUser(int id) {
+    public void deleteUser(int id) {
         sendInt(DELETE_USER, id);
     }
 
-    void deleteUserSubscription(int idUser, int idSubscription) {
+    public void deleteUserSubscription(int idUser, int idSubscription) {
         //TODO
         sendTwoInt(DELETE_USER_SUBSCRIPTION, idUser, idSubscription);
     }
 
-    void deleteUserFilm(int idUser, int idFilm) {
+    public void deleteUserFilm(int idUser, int idFilm) {
         sendTwoInt(DELETE_USER_FILM, idUser, idFilm);
     }
 
-    void deleteSubscription(int id) {
+    public void deleteSubscription(int id) {
         sendInt(DELETE_SUBSCRIPTION, id);
     }
 
-    void deleteSubscriptionCost(int id) {
+    public void deleteSubscriptionCost(int id) {
         sendInt(DELETE_SUBSCRIPTION_COST, id);
     }
 
-    void deleteSubscriptionFilm(int idSubscription, int idFilm) {
+    public void deleteSubscriptionFilm(int idSubscription, int idFilm) {
         sendTwoInt(DELETE_SUBSCRIPTION_FILM, idSubscription, idFilm);
     }
 
-    List<FilmDTO> getAllFilms() {
+    public List<FilmDTO> getAllFilms() {
         try {
             out.writeObject(GET_ALL_FILMS);
             out.flush();
@@ -269,7 +269,7 @@ public class DataAccessClient {
         }
     }
 
-    FilmDTO getFilm(int id) {
+    public FilmDTO getFilm(int id) {
         try {
             out.writeObject(GET_FILM);
             out.flush();
@@ -286,7 +286,7 @@ public class DataAccessClient {
         }
     }
 
-    List<FilmCostDTO> getAllFilmCosts(int idFilm) {
+    public List<FilmCostDTO> getAllFilmCosts(int idFilm) {
         try {
             out.writeObject(GET_ALL_FILM_COSTS);
             out.flush();
@@ -303,7 +303,7 @@ public class DataAccessClient {
         }
     }
 
-    FilmCostDTO getFilmCost(int idFilmCost) {
+    public FilmCostDTO getFilmCost(int idFilmCost) {
         try {
             out.writeObject(GET_FILM_COST);
             out.flush();
@@ -320,19 +320,19 @@ public class DataAccessClient {
         }
     }
 
-    List<Integer> getFilmSubscriptions(int idFilm) {
+    public List<Integer> getFilmSubscriptions(int idFilm) {
         return readIntegers(GET_FILM_SUBSCRIPTIONS, idFilm);
     }
 
-    List<Integer> getFilmActors(int idFilm) {
+    public List<Integer> getFilmActors(int idFilm) {
         return readIntegers(GET_FILM_ACTORS, idFilm);
     }
 
-    List<Integer> getFilmGenres(int idFilm) {
+    public List<Integer> getFilmGenres(int idFilm) {
         return readIntegers(GET_FILM_GENRES, idFilm);
     }
 
-    ActorDTO getActor(int id) {
+    public ActorDTO getActor(int id) {
         try {
             out.writeObject(GET_ACTOR);
             out.flush();
@@ -349,7 +349,7 @@ public class DataAccessClient {
         }
     }
 
-    GenreDTO getGenre(int id) {
+    public GenreDTO getGenre(int id) {
         try {
             out.writeObject(GET_GENRE);
             out.flush();
@@ -366,7 +366,7 @@ public class DataAccessClient {
         }
     }
 
-    List<SubscriptionDTO> getAllSubscriptions() {
+    public List<SubscriptionDTO> getAllSubscriptions() {
         try {
             out.writeObject(GET_ALL_SUBSCRIPTIONS);
             out.flush();
@@ -381,7 +381,7 @@ public class DataAccessClient {
         }
     }
 
-    SubscriptionDTO getSubscription(int id) {
+    public SubscriptionDTO getSubscription(int id) {
         try {
             out.writeObject(GET_SUBSCRIPTION);
             out.flush();
@@ -398,7 +398,7 @@ public class DataAccessClient {
         }
     }
 
-    List<SubscriptionCostDTO> getAllSubscriptionCosts(int idSubscription) {
+    public List<SubscriptionCostDTO> getAllSubscriptionCosts(int idSubscription) {
         try {
             out.writeObject(GET_ALL_SUBSCRIPTION_COSTS);
             out.flush();
@@ -415,7 +415,7 @@ public class DataAccessClient {
         }
     }
 
-    SubscriptionCostDTO getSubscriptionCost(int idSubscriptionCost) {
+    public SubscriptionCostDTO getSubscriptionCost(int idSubscriptionCost) {
         try {
             out.writeObject(GET_SUBSCRIPTION_COST);
             out.flush();
@@ -432,11 +432,11 @@ public class DataAccessClient {
         }
     }
 
-    List<Integer> getSubscriptionFilms(int idSubscription) {
+    public List<Integer> getSubscriptionFilms(int idSubscription) {
         return readIntegers(GET_SUBSCRIPTION_FILMS, idSubscription);
     }
 
-    UserDTO getUser(String userName) {
+    public UserDTO getUser(String userName) {
         try {
             out.writeObject(GET_SUBSCRIPTION_COST);
             out.flush();
