@@ -40,7 +40,7 @@ public class SQLSubscriptionCost implements SubscriptionCostDAO {
     }
 
     @Override
-    public SubscriptionCostDTO get(int id) {
+    public SubscriptionCostDTO getById(int id) {
         try(PreparedStatement preparedStatement =
                     connection.prepareStatement("SELECT idSubscription,Duration,Cost " +
                             "FROM [Subscription Cost] " +

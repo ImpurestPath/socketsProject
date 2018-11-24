@@ -42,7 +42,7 @@ public class SQLFilm implements FilmDAO {
         }
     }
 
-    public FilmDTO get(int id) {
+    public FilmDTO getById(int id) {
         try (PreparedStatement preparedStatement =
                      connection.prepareStatement(
                              "SELECT idFilm,Name,Year,Reggiseur,Rating FROM Film WHERE idFilm = ?")) {
@@ -68,7 +68,7 @@ public class SQLFilm implements FilmDAO {
 
     @Override
     public FilmCostDTO getCost(int idCost) {
-        return filmCostDAO.get(idCost);
+        return filmCostDAO.getById(idCost);
     }
 
     @Override

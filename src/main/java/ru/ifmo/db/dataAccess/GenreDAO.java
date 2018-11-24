@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface GenreDAO {
     List<GenreDTO> getAll(int idFilm);
-    GenreDTO get(int id);
+    GenreDTO getById(int id);
     int add(GenreDTO genreDTO);
     void update(int id, GenreDTO genreDTO);
     void delete(int id);

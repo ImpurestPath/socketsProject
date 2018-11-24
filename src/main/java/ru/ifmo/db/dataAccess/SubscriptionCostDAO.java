@@ -8,7 +8,7 @@ import java.util.List;
 public interface SubscriptionCostDAO {
     List<SubscriptionCostDTO> getAll(int idSubscription);
 
-    SubscriptionCostDTO get(int id);
+    SubscriptionCostDTO getById(int id);
 
     int add(SubscriptionCostDTO subscriptionCostDTO);
 

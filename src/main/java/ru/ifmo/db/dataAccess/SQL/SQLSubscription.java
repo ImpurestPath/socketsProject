@@ -36,7 +36,7 @@ public class SQLSubscription implements SubscriptionDAO {
         }
     }
 
-    public SubscriptionDTO get(int id) {
+    public SubscriptionDTO getById(int id) {
         try(PreparedStatement preparedStatement =
                     connection.prepareStatement("SELECT Name FROM Subscription WHERE idSubscription = ?")){
             preparedStatement.setInt(1,id);
@@ -56,7 +56,7 @@ public class SQLSubscription implements SubscriptionDAO {
 
     @Override
     public SubscriptionCostDTO getCost(int idCost) {
-        return subscriptionCostDAO.get(idCost);
+        return subscriptionCostDAO.getById(idCost);
     }
 
     @Override

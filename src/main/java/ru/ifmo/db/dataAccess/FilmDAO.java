@@ -10,7 +10,7 @@ import java.util.List;
 public interface FilmDAO {
     List<FilmDTO> getAll();
 
-    FilmDTO get(int id);
+    FilmDTO getById(int id);
 
     List<FilmCostDTO> getAllCosts(int idFilm);
 

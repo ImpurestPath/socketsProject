@@ -39,7 +39,7 @@ public class SQLFilmCost implements FilmCostDAO {
     }
 
     @Override
-    public FilmCostDTO get(int id) {
+    public FilmCostDTO getById(int id) {
         try(PreparedStatement preparedStatement =
                     connection.prepareStatement("SELECT idFilm,Duration,Cost FROM [Film Cost] WHERE idFilmCost = ?")){
             preparedStatement.setInt(1,id);

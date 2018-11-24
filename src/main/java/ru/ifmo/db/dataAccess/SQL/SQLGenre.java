@@ -34,7 +34,7 @@ public class SQLGenre implements GenreDAO {
         }
     }
 
-    public GenreDTO get(int id) {
+    public GenreDTO getById(int id) {
         try(PreparedStatement preparedStatement =
                     connection.prepareStatement("SELECT Name FROM Genre WHERE idGenre = ?")){
             preparedStatement.setInt(1,id);

@@ -10,7 +10,7 @@ import java.util.List;
 public interface SubscriptionDAO {
     List<SubscriptionDTO> getAll();
 
-    SubscriptionDTO get(int id);
+    SubscriptionDTO getById(int id);
 
     List<SubscriptionCostDTO> getAllCosts(int idSubscription);
 

@@ -201,7 +201,7 @@ public class SQLConnection implements ConnectionDAO {
 
     @Override
     public FilmDTO getFilm(int id) {
-        return filmDAO.get(id);
+        return filmDAO.getById(id);
     }
 
     @Override
@@ -236,7 +236,7 @@ public class SQLConnection implements ConnectionDAO {
 
     @Override
     public GenreDTO getGenre(int id) {
-        return genreDAO.get(id);
+        return genreDAO.getById(id);
     }
 
     @Override
@@ -246,7 +246,7 @@ public class SQLConnection implements ConnectionDAO {
 
     @Override
     public SubscriptionDTO getSubscription(int id) {
-        return subscriptionDAO.get(id);
+        return subscriptionDAO.getById(id);
     }
 
     @Override
@@ -266,6 +266,6 @@ public class SQLConnection implements ConnectionDAO {
 
     @Override
     public UserDTO getUser(String userName) {
-        return userDAO.get(userName);
+        return userDAO.getByName(userName);
     }
 }
