@@ -2,11 +2,16 @@ package ru.ifmo.db.gui.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import ru.ifmo.db.gui.Actor;
 import ru.ifmo.db.gui.Film;
 import ru.ifmo.db.gui.Genre;
@@ -60,5 +65,23 @@ public class MainWindowController implements Initializable {
 
     public void btnSearchClicked(ActionEvent actionEvent) {
 
+    }
+
+    public void btnDetailsClicked(ActionEvent actionEvent) {
+        Film item = (Film) listViewFilms.getSelectionModel().getSelectedItem();
+        if (item == null) return;
+        Stage info = new Stage();
+        info.initOwner(listViewFilms.getScene().getWindow());
+        info.initModality(Modality.APPLICATION_MODAL);
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/filmInfo.fxml"));
+            Parent parent = loader.load();
+            info.setScene(new Scene(parent));
+            FilmInfoController filmInfoController = loader.getController();
+            filmInfoController.setFilm(item);
+            info.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

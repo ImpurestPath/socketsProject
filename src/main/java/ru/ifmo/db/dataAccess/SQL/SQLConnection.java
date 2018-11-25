@@ -20,7 +20,7 @@ public class SQLConnection implements ConnectionDAO {
     private UserPurchaseDAO subscriptionPurchaseDAO;
 
     public SQLConnection() {
-        String connectionUrl = "jdbc:sqlserver://192.168.43.2:1433;databaseName=OnlineCinema;user=user2;password=user";
+        String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=OnlineCinema;user=user;password=user";
         try {
             // Load SQL Server JDBC driver and establish connection.
             //System.out.print("Connecting to SQL Server ... ");

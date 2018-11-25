@@ -44,7 +44,7 @@ public class FilmListCell extends ListCell<Film> {
             lblInfo.setText(String.format("Year: %d",film.getYear()));
             lblRating.setText(Short.toString(film.getRating()));
             if (film.getRating() > 80) lblRating.setTextFill(Color.color(0.01,0.9,0.01));
-            else if (film.getRating() > 50) lblRating.setTextFill(Color.color(0.001,0.001,0.99));
+            else if (film.getRating() > 50) lblRating.setTextFill(Color.color(0.9,0.5,0.01));
             else lblRating.setTextFill(Color.color(0.8,0.1,0.1));
             setText(null);
             setGraphic(anchorPane);
