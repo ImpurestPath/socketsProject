@@ -51,15 +51,6 @@ public class MainWindowController implements Initializable {
             });
             return listCell;
         });
-        /*listViewFilms.setItems(FXCollections.observableArrayList(new ArrayList<Film>()));
-        List<Actor> actors = new ArrayList<>();
-        actors.add(new Actor(-1, "1"));
-        actors.add(new Actor(-1, "2"));
-        List<Genre> genres = new ArrayList<>();
-        genres.add(new Genre(-1, "Drama"));
-        genres.add(new Genre(-1, "Comedy"));
-        listViewFilms.getItems().add(new Film("abc", "smbd", (short) 1999, (short) 89, actors, genres));
-        listViewFilms.getItems().add(new Film("abc2", "smbd2", (short) 2002, (short) 55, actors, genres));*/
     }
 
     public void setFilms(List<Film> films) {

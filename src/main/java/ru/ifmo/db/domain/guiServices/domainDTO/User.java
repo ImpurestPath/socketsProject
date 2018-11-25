@@ -2,9 +2,10 @@ package ru.ifmo.db.domain.guiServices.domainDTO;
 
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.UserPurchaseDTO;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
+public class User implements Serializable,hasId {
     private final int id;
     private final String username;
     private final double balance;

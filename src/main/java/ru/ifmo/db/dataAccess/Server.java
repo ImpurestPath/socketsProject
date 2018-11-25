@@ -18,6 +18,7 @@ public class Server {
                 while (client == null) {
                     client = ss.accept();
                 }
+                System.out.println("New client");
                 Thread t = new ClientThread(client, connection);
                 t.run();
             }

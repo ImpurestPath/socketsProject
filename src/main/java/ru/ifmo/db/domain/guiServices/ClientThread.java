@@ -128,6 +128,10 @@ public class ClientThread extends Thread {
                         break;
                     case DELETE_USER_FILM:
                         break;
+                    case DELETE_SUBSCRIPTION:
+                        id = in.readInt();
+                        subscriptionManager.delete(id);
+                        break;
                     case GET_ALL_FILMS:
                         out.writeObject(filmManager.getAll());
                         out.flush();
