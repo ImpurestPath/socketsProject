@@ -17,7 +17,7 @@ public class SQLGenre implements GenreDAO {
         this.connection = connection;
     }
 
-    public List<GenreDTO> getAll(int idFilm) {
+    public List<GenreDTO> getAllById(int idFilm) {
         try(PreparedStatement preparedStatement =
                     connection.prepareStatement("SELECT idGenre,Name FROM Genre WHERE idGenre IN " +
                             "(SELECT idGenre FROM [Film Genre] WHERE idFilm = ?)")){

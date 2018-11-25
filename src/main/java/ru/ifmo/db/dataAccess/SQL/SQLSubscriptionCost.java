@@ -17,7 +17,7 @@ public class SQLSubscriptionCost implements SubscriptionCostDAO {
     }
 
     @Override
-    public List<SubscriptionCostDTO> getAll(int idSubscription) {
+    public List<SubscriptionCostDTO> getAllById(int idSubscription) {
         try(PreparedStatement preparedStatement =
                     connection.prepareStatement("SELECT idSubscriptionCost,Duration,Cost " +
                             "FROM [Subscription Cost] " +

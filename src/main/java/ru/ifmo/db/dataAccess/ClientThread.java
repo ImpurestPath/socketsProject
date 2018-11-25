@@ -11,10 +11,12 @@ import java.net.Socket;
 public class ClientThread extends Thread {
     private Socket socket;
     private ConnectionDAO connection;
-    ClientThread(Socket socket, ConnectionDAO connection){
+
+    ClientThread(Socket socket, ConnectionDAO connection) {
         this.socket = socket;
         this.connection = connection;
     }
+
     public void run() {
         ObjectOutputStream out = null;
         ObjectInputStream in = null;
@@ -260,7 +262,7 @@ public class ClientThread extends Thread {
                 out.flush(); // заставляем поток закончить передачу данных.
                 System.out.println("Waiting for the next line...");
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             //if (out != null) out.writeObject(Command.ERROR);
 

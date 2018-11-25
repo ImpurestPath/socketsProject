@@ -63,7 +63,7 @@ public class SQLFilm implements FilmDAO {
 
     @Override
     public List<FilmCostDTO> getAllCosts(int idFilm) {
-        return filmCostDAO.getAll(idFilm);
+        return filmCostDAO.getAllById(idFilm);
     }
 
     @Override
@@ -84,13 +84,15 @@ public class SQLFilm implements FilmDAO {
             return null;
         }
     }
+
     private List<Integer> getIntegersFromSelect(ResultSet resultSet) throws SQLException {
         List<Integer> integers = new ArrayList<>();
-        while (resultSet.next()){
+        while (resultSet.next()) {
             integers.add(resultSet.getInt(1));
         }
         return integers;
     }
+
     @Override
     public List<Integer> getGenres(int idFilm) {
         try (PreparedStatement preparedStatement =

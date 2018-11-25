@@ -1,15 +1,10 @@
 package ru.ifmo.db.dataAccess;
 
 
-
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.GenreDTO;
 
 import java.util.List;
 
-public interface GenreDAO {
-    List<GenreDTO> getAll(int idFilm);
-    GenreDTO getById(int id);
-    int add(GenreDTO genreDTO);
-    void update(int id, GenreDTO genreDTO);
-    void delete(int id);
+public interface GenreDAO extends DAO<GenreDTO>, getAllByIdDAO<GenreDTO> {
+
 }

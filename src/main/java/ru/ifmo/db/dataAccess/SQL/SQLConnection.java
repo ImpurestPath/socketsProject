@@ -226,7 +226,7 @@ public class SQLConnection implements ConnectionDAO {
 
     @Override
     public ActorDTO getActor(int id) {
-        return actorDAO.get(id);
+        return actorDAO.getById(id);
     }
 
     @Override

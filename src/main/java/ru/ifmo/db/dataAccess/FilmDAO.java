@@ -1,16 +1,12 @@
 package ru.ifmo.db.dataAccess;
 
 
-
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmDTO;
 
 import java.util.List;
 
-public interface FilmDAO {
-    List<FilmDTO> getAll();
-
-    FilmDTO getById(int id);
+public interface FilmDAO extends DAO<FilmDTO>, getAllDAO<FilmDTO> {
 
     List<FilmCostDTO> getAllCosts(int idFilm);
 
@@ -19,9 +15,8 @@ public interface FilmDAO {
     List<Integer> getActors(int idFilm);
 
     List<Integer> getGenres(int idFilm);
-    List<Integer> getSubscriptions(int idFilm);
 
-    int add(FilmDTO filmDTO);
+    List<Integer> getSubscriptions(int idFilm);
 
     void addGenre(int idFilm, int idGenre);
 
@@ -29,11 +24,7 @@ public interface FilmDAO {
 
     int addCost(FilmCostDTO dto);
 
-    void update(int id, FilmDTO filmDTO);
-
     void updateCost(int id, FilmCostDTO dto);
-
-    void delete(int id);
 
     void deleteGenre(int idFilm, int idGenre);
 

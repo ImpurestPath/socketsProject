@@ -1,16 +1,12 @@
 package ru.ifmo.db.dataAccess;
 
 
-
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionDTO;
 
 import java.util.List;
 
-public interface SubscriptionDAO {
-    List<SubscriptionDTO> getAll();
-
-    SubscriptionDTO getById(int id);
+public interface SubscriptionDAO extends DAO<SubscriptionDTO>, getAllDAO<SubscriptionDTO> {
 
     List<SubscriptionCostDTO> getAllCosts(int idSubscription);
 
@@ -18,17 +14,11 @@ public interface SubscriptionDAO {
 
     List<Integer> getFilms(int idSubscription);
 
-    int add(SubscriptionDTO subscriptionDTO);
-
     void addFilm(int idSubscription, int idFilm);
 
     int addCost(SubscriptionCostDTO dto);
 
-    void update(int id, SubscriptionDTO subscriptionDTO);
-
     void updateCost(int id, SubscriptionCostDTO dto);
-
-    void delete(int id);
 
     void deleteFilm(int idSubscription, int idFilm);
 

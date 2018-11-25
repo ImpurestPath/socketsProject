@@ -51,7 +51,7 @@ public class SQLSubscription implements SubscriptionDAO {
 
     @Override
     public List<SubscriptionCostDTO> getAllCosts(int idSubscription) {
-        return subscriptionCostDAO.getAll(idSubscription);
+        return subscriptionCostDAO.getAllById(idSubscription);
     }
 
     @Override
