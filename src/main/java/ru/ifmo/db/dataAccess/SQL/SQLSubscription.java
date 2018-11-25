@@ -82,7 +82,7 @@ public class SQLSubscription implements SubscriptionDAO {
                     connection.prepareStatement("INSERT INTO Subscription(Name) VALUES (?)")){
             preparedStatement.setString(1,subscriptionDTO.getName());
             preparedStatement.execute();
-            return connection.createStatement().executeQuery("SELECT last_insert_rowid()").getInt(1);
+            return connection.createStatement().executeQuery("SELECT SCOPE_IDENTITY()").getInt(1);
         }catch (Exception e){
             e.printStackTrace();
             return -1;

@@ -16,6 +16,8 @@ public class SQLConnection implements ConnectionDAO {
     private SubscriptionDAO subscriptionDAO;
     //private SubscriptionCostDAO subscriptionCostDAO;
     private UserDAO userDAO;
+    private UserPurchaseDAO filmPurchaseDAO;
+    private UserPurchaseDAO subscriptionPurchaseDAO;
 
     public SQLConnection() {
         String connectionUrl = "jdbc:sqlserver://192.168.43.2:1433;databaseName=OnlineCinema;user=user2;password=user";
@@ -32,6 +34,8 @@ public class SQLConnection implements ConnectionDAO {
             subscriptionDAO = new SQLSubscription(connection);
             //subscriptionCostDAO = new SQLSubscriptionCost(connection);
             userDAO = new SQLUser(connection);
+            filmPurchaseDAO = new SQLUserFilm(connection);
+            subscriptionPurchaseDAO = new SQLUserSubscription(connection);
         } catch (Exception e) {
             System.out.println();
             e.printStackTrace();
@@ -76,12 +80,12 @@ public class SQLConnection implements ConnectionDAO {
 
     @Override
     public void addUserSubscription(int idUser, int idSubscriptionCost) {
-        userDAO.addSubscription(idUser, idSubscriptionCost);
+        subscriptionPurchaseDAO.add(idSubscriptionCost, idUser);
     }
 
     @Override
     public void addUserFilm(int idUser, int idFilmCost) {
-        userDAO.addFilm(idUser, idFilmCost);
+        filmPurchaseDAO.add(idFilmCost, idUser);
     }
 
     @Override
@@ -170,13 +174,13 @@ public class SQLConnection implements ConnectionDAO {
     }
 
     @Override
-    public void deleteUserSubscription(int idUser, int idSubscription) {
-        userDAO.deleteSubscription(idUser, idSubscription);
+    public void deleteUserSubscription(UserPurchaseDTO dto) {
+        subscriptionPurchaseDAO.delete(dto);
     }
 
     @Override
-    public void deleteUserFilm(int idUser, int idFilm) {
-        userDAO.deleteFilm(idUser, idFilm);
+    public void deleteUserFilm(UserPurchaseDTO dto) {
+        filmPurchaseDAO.delete(dto);
     }
 
     @Override

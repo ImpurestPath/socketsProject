@@ -4,10 +4,11 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import static ru.ifmo.db.domain.guiServices.Commands.*;
 
 public class domainClient {
     domainClient(){
-        int serverPort = 3567; // здесь обязательно нужно указать порт к которому привязывается сервер.
+        int serverPort = 3568; // здесь обязательно нужно указать порт к которому привязывается сервер.
         String address = "127.0.0.1"; // это IP-адрес компьютера, где исполняется наша серверная программа.
         // Здесь указан адрес того самого компьютера где будет исполняться и клиент.
 
@@ -23,12 +24,11 @@ public class domainClient {
             out.flush();
 
             //while (true) {
-            out.writeObject(DomainCommands.ADD_FILM);
+            out.writeObject(GET_ALL_FILMS);
             out.flush();
             //out.writeObject();
             out.flush(); // заставляем поток закончить передачу данных.
             System.out.println(in.readObject().toString());
-            System.out.println("Looks like the server is pleased with us. Go ahead and enter more lines.");
             System.out.println();
             //}
         } catch (Exception x) {

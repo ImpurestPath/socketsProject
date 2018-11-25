@@ -59,9 +59,9 @@ public interface ConnectionDAO {
 
     void deleteUser(int id);
 
-    void deleteUserSubscription(int idUser, int idSubscription);
+    void deleteUserSubscription(UserPurchaseDTO dto);
 
-    void deleteUserFilm(int idUser, int idFilm);
+    void deleteUserFilm(UserPurchaseDTO dto);
 
     void deleteSubscription(int id);
 

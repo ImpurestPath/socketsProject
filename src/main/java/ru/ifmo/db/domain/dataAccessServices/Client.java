@@ -18,7 +18,6 @@ public class Client {
     public Client() {
         int serverPort = 3567; // здесь обязательно нужно указать порт к которому привязывается сервер.
         String address = "127.0.0.1"; // это IP-адрес компьютера, где исполняется наша серверная программа.
-        // Здесь указан адрес того самого компьютера где будет исполняться и клиент.
         try {
             InetAddress ipAddress = InetAddress.getByName(address);
             Socket socket = new Socket(ipAddress, serverPort);
@@ -447,6 +446,62 @@ public class Client {
                 throw new Exception();
             }
             return dto;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<UserPurchaseDTO> getAllUserFilms(int idUser) {
+        try {
+            sendInt(GET_ALL_USER_FILMS, idUser);
+            List<UserPurchaseDTO> films = (List<UserPurchaseDTO>) in.readObject();
+            if (in.readObject() != FINISHED) {
+                throw new Exception();
+            }
+            return films;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<UserPurchaseDTO> getAllUserSubscriptions(int idUser) {
+        try {
+            sendInt(GET_ALL_USER_SUBSCRIPTIONS, idUser);
+            List<UserPurchaseDTO> subscriptions = (List<UserPurchaseDTO>) in.readObject();
+            if (in.readObject() != FINISHED) {
+                throw new Exception();
+            }
+            return subscriptions;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<UserPurchaseDTO> getUserFilm(int idUser, int idFilm) {
+        try {
+            sendTwoInt(GET_USER_FILM, idUser, idFilm);
+            List<UserPurchaseDTO> films = (List<UserPurchaseDTO>) in.readObject();
+            if (in.readObject() != FINISHED) {
+                throw new Exception();
+            }
+            return films;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<UserPurchaseDTO> getUserSubscription(int idUser, int idSubscription) {
+        try {
+            sendTwoInt(GET_USER_SUBSCRIPTION, idUser, idSubscription);
+            List<UserPurchaseDTO> subscription = (List<UserPurchaseDTO>) in.readObject();
+            if (in.readObject() != FINISHED) {
+                throw new Exception();
+            }
+            return subscription;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

@@ -28,6 +28,20 @@ public class SQLUser implements UserDAO {
         }
     }
 
+    @Override
+    public UserDTO getById(int id) {
+        try (PreparedStatement preparedStatement =
+                     connection.prepareStatement("SELECT idUser, [Name], Balance FROM [User] WHERE idUser = ?")) {
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            return new UserDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getDouble(3));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int add(UserDTO userDTO) {
         try (PreparedStatement preparedStatement =
                      connection.prepareStatement("INSERT INTO [User](Name,Balance) VALUES (?,?)")) {
@@ -38,32 +52,6 @@ public class SQLUser implements UserDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return -1;
-        }
-    }
-
-    @Override
-    public void addFilm(int idUser, int idFilm) {
-        try (PreparedStatement preparedStatement =
-                     connection.prepareStatement("INSERT INTO [Purchased Movies](idUser,idFilm) VALUES (?,?)")) {
-            preparedStatement.setInt(1, idUser);
-            preparedStatement.setInt(2, idFilm);
-            preparedStatement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
-    }
-
-    @Override
-    public void addSubscription(int idUser, int idSubscription) {
-        try (PreparedStatement preparedStatement =
-                     connection.prepareStatement("INSERT INTO [Purchased Subscriptions](idUser,idSubscription) VALUES (?,?)")) {
-            preparedStatement.setInt(1, idUser);
-            preparedStatement.setInt(2, idSubscription);
-            preparedStatement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-
         }
     }
 
@@ -89,27 +77,4 @@ public class SQLUser implements UserDAO {
         }
     }
 
-    @Override
-    public void deleteFilm(int idUser, int idFilm) {
-        try (PreparedStatement preparedStatement =
-                     connection.prepareStatement("DELETE FROM [Purchased Movies] WHERE idUser = ? AND idFilm = ?")) {
-            preparedStatement.setInt(1, idUser);
-            preparedStatement.setInt(2, idFilm);
-            preparedStatement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void deleteSubscription(int idUser, int idSubscription) {
-        try (PreparedStatement preparedStatement =
-                     connection.prepareStatement("DELETE FROM [Purchased Subscriptions] WHERE idUser = ? AND idSubscription = ?")) {
-            preparedStatement.setInt(1, idUser);
-            preparedStatement.setInt(2, idSubscription);
-            preparedStatement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }

@@ -18,8 +18,8 @@ public class ClientThread extends Thread {
     }
 
     public void run() {
-        ObjectOutputStream out = null;
-        ObjectInputStream in = null;
+        ObjectOutputStream out;
+        ObjectInputStream in;
         try {
             out = new ObjectOutputStream(socket.getOutputStream());
             out.flush();
@@ -38,6 +38,7 @@ public class ClientThread extends Thread {
             UserDTO userDTO;
             SubscriptionDTO subscriptionDTO;
             SubscriptionCostDTO subscriptionCostDTO;
+            UserPurchaseDTO userPurchaseDTO;
             String username;
             while (true) {
                 command = (Commands) in.readObject();
@@ -169,14 +170,10 @@ public class ClientThread extends Thread {
                         connection.deleteUser(id);
                         break;
                     case DELETE_USER_SUBSCRIPTION:
-                        idUser = in.readInt();
-                        idSubscription = in.readInt();
-                        connection.deleteUserSubscription(idUser, idSubscription);
+
                         break;
                     case DELETE_USER_FILM:
-                        idUser = in.readInt();
-                        idFilm = in.readInt();
-                        connection.deleteUserFilm(idUser, idFilm);
+
                         break;
                     case DELETE_SUBSCRIPTION:
                         id = in.readInt();
@@ -257,6 +254,7 @@ public class ClientThread extends Thread {
                         socket.close();
                         in.close();
                         out.close();
+                        throw new Exception();
                 }
                 out.writeObject(Commands.FINISHED);
                 out.flush(); // заставляем поток закончить передачу данных.

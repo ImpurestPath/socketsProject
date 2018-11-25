@@ -26,4 +26,7 @@ public enum Commands {
     GET_ALL_SUBSCRIPTIONS,
     GET_SUBSCRIPTION,
     GET_USER,
+    ERROR,
+    CLOSE_CONNECTION,
+    FINISHED
 }

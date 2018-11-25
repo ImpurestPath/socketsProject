@@ -1,6 +1,7 @@
 package ru.ifmo.db.domain.dataAccessServices.dataAccessDTO;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class FilmCostDTO implements Serializable {
     private final int id;
@@ -30,5 +31,21 @@ public class FilmCostDTO implements Serializable {
 
     public double getCost() {
         return cost;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FilmCostDTO that = (FilmCostDTO) o;
+        return id == that.id &&
+                idFilm == that.idFilm &&
+                duration == that.duration &&
+                Double.compare(that.cost, cost) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, idFilm, duration, cost);
     }
 }
