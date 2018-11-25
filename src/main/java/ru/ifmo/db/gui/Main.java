@@ -25,28 +25,11 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/mainwindow.fxml"));
         Parent root = loader.load();
         Client client = Client.getInstance();
+        ActorManager actorManager = new ActorManager(client);
+        GenreManager genreManager = new GenreManager(client);
+        FilmManager filmManager = new FilmManager(client,actorManager,genreManager);
         MainWindowController mainWindowController = loader.getController();
-        List<Film> films = client.getAll(Film.class);
-        List<ru.ifmo.db.gui.Film> filmsGUI = new ArrayList<>();
-        Map<Integer, Actor> actors = new HashMap<>();
-        Map<Integer, Genre> genres = new HashMap<>();
-        for (Film film : films){
-            for (int i : film.getActors()){
-                if (!actors.containsKey(i))
-                    actors.put(i,TransformerToGUI.toActor(client.get(i, ru.ifmo.db.domain.guiServices.domainDTO.Actor.class)));
-            }
-            for (int i : film.getGenres()){
-                if (!genres.containsKey(i))
-                    genres.put(i, TransformerToGUI.toGenre(client.get(i, ru.ifmo.db.domain.guiServices.domainDTO.Genre.class)));
-            }
-            List<Actor> actorsGUI = new ArrayList<>();
-            List<Genre> genreGUI = new ArrayList<>();
-            for (int i : film.getActors()) actorsGUI.add(actors.get(i));
-            for (int i : film.getGenres()) genreGUI.add(genres.get(i));
-            filmsGUI.add(TransformerToGUI.toFilm(film,actorsGUI,genreGUI));
-        }
-
-        mainWindowController.setFilms(filmsGUI);
+        mainWindowController.setFilms(filmManager.getAll());
         Scene scene = new Scene(root);
         stage.setMinHeight(720);
         stage.setMinWidth(1080);

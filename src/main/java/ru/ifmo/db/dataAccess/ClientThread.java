@@ -258,7 +258,7 @@ public class ClientThread extends Thread {
                 }
                 out.writeObject(Commands.FINISHED);
                 out.flush(); // заставляем поток закончить передачу данных.
-                System.out.println("Waiting for the next line...");
+                System.out.println("Finished " + command.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();

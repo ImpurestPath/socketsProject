@@ -137,17 +137,17 @@ public class ClientThread extends Thread {
                         out.flush();
                         break;
                     case GET_FILM:
-                        id = in.readInt();
+                        id = (Integer) in.readObject();
                         out.writeObject(filmManager.getById(id));
                         out.flush();
                         break;
                     case GET_ACTOR:
-                        id = in.readInt();
+                        id = (Integer) in.readObject();
                         out.writeObject(actorManager.getById(id));
                         out.flush();
                         break;
                     case GET_GENRE:
-                        id = in.readInt();
+                        id = (Integer) in.readObject();
                         out.writeObject(genreManager.getById(id));
                         out.flush();
                         break;
@@ -156,7 +156,7 @@ public class ClientThread extends Thread {
                         out.flush();
                         break;
                     case GET_SUBSCRIPTION:
-                        id = in.readInt();
+                        id = (Integer) in.readObject();
                         out.writeObject(subscriptionManager.getById(id));
                         out.flush();
                         break;

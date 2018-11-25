@@ -1,22 +1,30 @@
 package ru.ifmo.db.gui;
 
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
+
 import java.util.List;
 
 public class Film {
+    private final int id;
     private final String name;
     private final String reggiseur;
     private final short year;
     private final short rating;
     private final List<Actor> actors;
     private final List<Genre> genres;
+    private final List<FilmCostDTO> costs;
+    private final List<Integer> subscriptions;
 
-    public Film(String name, String reggiseur, short year, short rating, List<Actor> actors, List<Genre> genres) {
+    public Film(int id, String name, String reggiseur, short year, short rating, List<Actor> actors, List<Genre> genres, List<FilmCostDTO> costs, List<Integer> subscriptions) {
+        this.id = id;
         this.name = name;
         this.reggiseur = reggiseur;
         this.year = year;
         this.rating = rating;
         this.actors = actors;
         this.genres = genres;
+        this.costs = costs;
+        this.subscriptions = subscriptions;
     }
 
     public String getName() {
@@ -41,5 +49,17 @@ public class Film {
 
     public List<Genre> getGenres() {
         return genres;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public List<FilmCostDTO> getCosts() {
+        return costs;
+    }
+
+    public List<Integer> getSubscriptions() {
+        return subscriptions;
     }
 }
