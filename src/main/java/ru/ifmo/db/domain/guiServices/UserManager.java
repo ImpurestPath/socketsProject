@@ -16,6 +16,7 @@ public class UserManager implements Manager<User> {
 
     public User getByName(String username) {
         UserDTO userDTO = client.getUser(username);
+        if (userDTO == null) return null;
         return TransformerToEntity.toUser(userDTO, client.getAllUserFilms(userDTO.getId()), client.getAllUserSubscriptions(userDTO.getId()));
     }
 

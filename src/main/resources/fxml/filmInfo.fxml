@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ifmo.db.gui.controllers.FilmInfoController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="746.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ifmo.db.gui.controllers.FilmInfoController">
    <center>
       <AnchorPane prefHeight="359.0" prefWidth="675.0" BorderPane.alignment="CENTER">
          <children>
@@ -65,7 +70,7 @@
                   </Button>
                </children>
             </VBox>
-            <PieChart fx:id="chartReviews" layoutX="200.0" layoutY="238.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" title="Reviews" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="238.0" />
+            <PieChart fx:id="chartReviews" labelsVisible="false" layoutX="200.0" layoutY="238.0" legendSide="LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" title="Reviews" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="350.0" AnchorPane.topAnchor="238.0" />
             <TableView fx:id="tableViewCost" layoutX="426.0" layoutY="238.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="240.0">
               <columns>
                 <TableColumn fx:id="tableColumnCost" prefWidth="75.0" text="Cost" />

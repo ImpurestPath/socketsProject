@@ -102,12 +102,11 @@ public class Client {
             out.flush();
             out.writeInt(i);
             out.flush();
-            if (in.readObject() != FINISHED) {
+            /*if (in.readObject() != FINISHED) {
                 throw new Exception();
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
-
         }
     }
 
@@ -437,7 +436,7 @@ public class Client {
 
     public UserDTO getUser(String userName) {
         try {
-            out.writeObject(GET_SUBSCRIPTION_COST);
+            out.writeObject(GET_USER);
             out.flush();
             out.writeUTF(userName);
             out.flush();

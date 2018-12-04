@@ -20,7 +20,7 @@ public class SQLConnection implements ConnectionDAO {
     private UserPurchaseDAO subscriptionPurchaseDAO;
 
     public SQLConnection() {
-        String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=OnlineCinema;user=user;password=user";
+        String connectionUrl = "jdbc:sqlserver://localhost:1433;databaseName=OnlineCinema;user=user2;password=user";
         try {
             // Load SQL Server JDBC driver and establish connection.
             //System.out.print("Connecting to SQL Server ... ");
@@ -272,4 +272,15 @@ public class SQLConnection implements ConnectionDAO {
     public UserDTO getUser(String userName) {
         return userDAO.getByName(userName);
     }
+
+    @Override
+    public List<UserPurchaseDTO> getUserFilms(int idUser) {
+        return filmPurchaseDAO.getAllById(idUser);
+    }
+
+    @Override
+    public List<UserPurchaseDTO> getUserSubscriptions(int idUser) {
+        return subscriptionPurchaseDAO.getAllById(idUser);
+    }
+
 }

@@ -9,9 +9,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 import ru.ifmo.db.gui.Actor;
 import ru.ifmo.db.gui.Film;
+import ru.ifmo.db.gui.UserManager;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,6 +32,7 @@ public class FilmInfoController implements Initializable {
     public Label lblName;
     public Label lblRating;
     private Film film;
+    private UserManager userManager;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,14 +54,25 @@ public class FilmInfoController implements Initializable {
         else lblRating.setTextFill(Color.color(0.8,0.1,0.11));
         lblYear.setText(Short.toString(film.getYear()));
         lblReggiseur.setText(film.getReggiseur());
-        chartReviews.getData().add(new PieChart.Data("Positive",70));
-        chartReviews.getData().add(new PieChart.Data("Neutral",30));
-        chartReviews.getData().add(new PieChart.Data("Negative",10));
+        chartReviews.getData().add(new PieChart.Data("Negative",film.getNegativeReviews()));
+        chartReviews.getData().add(new PieChart.Data("Neutral",film.getNeutralReviews()));
+        chartReviews.getData().add(new PieChart.Data("Positive",film.getPositiveReviews()));
+    }
+
+    public void setUserManager(UserManager userManager) {
+        this.userManager = userManager;
     }
 
     public void btnBuyFilmClicked(ActionEvent actionEvent) {
+        FilmCostDTO cost = (FilmCostDTO) tableViewCost.getSelectionModel().getSelectedItem();
+        try {
+            userManager.buy(userManager.getNow(),cost);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void btnBackClicked(ActionEvent actionEvent) {
+        ((Stage)lblName.getScene().getWindow()).close();
     }
 }

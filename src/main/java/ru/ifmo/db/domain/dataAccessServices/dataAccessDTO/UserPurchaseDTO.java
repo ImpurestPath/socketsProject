@@ -1,8 +1,9 @@
 package ru.ifmo.db.domain.dataAccessServices.dataAccessDTO;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserPurchaseDTO {
+public class UserPurchaseDTO implements Serializable {
     private final int idPurchase;
     private final int idUser;
     private final Date start;

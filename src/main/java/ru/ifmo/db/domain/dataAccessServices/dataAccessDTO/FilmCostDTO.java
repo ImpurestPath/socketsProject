@@ -1,9 +1,11 @@
 package ru.ifmo.db.domain.dataAccessServices.dataAccessDTO;
 
+import ru.ifmo.db.domain.Cost;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class FilmCostDTO implements Serializable {
+public class FilmCostDTO implements Serializable, Cost {
     private final int id;
     private final int idFilm;
     private final int duration;

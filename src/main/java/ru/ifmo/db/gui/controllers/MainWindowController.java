@@ -14,11 +14,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import ru.ifmo.db.gui.Actor;
 import ru.ifmo.db.gui.Film;
-import ru.ifmo.db.gui.Genre;
+import ru.ifmo.db.gui.FilmManager;
+import ru.ifmo.db.gui.UserManager;
 import ru.ifmo.db.gui.listCell.FilmListCell;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -29,14 +29,13 @@ public class MainWindowController implements Initializable {
     public Label lblReggiseur;
     public TableView tableViewGenres;
     public TableColumn tableColumnGenres;
-    public TableView tableViewActors;
-    public TableColumn tableColumnActors;
     public ListView listViewFilms;
     public TextField txtSearch;
+    public FilmManager filmManager;
+    public UserManager userManager;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tableColumnActors.setCellValueFactory(new PropertyValueFactory<Actor, String>("name"));
         tableColumnGenres.setCellValueFactory(new PropertyValueFactory<Actor, String>("name"));
         listViewFilms.setCellFactory(params -> {
 
@@ -50,21 +49,28 @@ public class MainWindowController implements Initializable {
                     lblYear.setText(Short.toString(item.getYear()));
                     lblReggiseur.setText(item.getReggiseur());
 
-                    tableViewActors.setItems(FXCollections.observableArrayList(item.getActors()));
                     tableViewGenres.setItems(FXCollections.observableArrayList(item.getGenres()));
                 }
             });
             return listCell;
         });
     }
+    public void setFilmManager(FilmManager filmManager){
+        this.filmManager = filmManager;
+    }
+    public void setUserManager(UserManager userManager) {this.userManager = userManager;}
 
     public void setFilms(List<Film> films) {
         listViewFilms.setItems(FXCollections.observableArrayList(films));
-
     }
 
     public void btnSearchClicked(ActionEvent actionEvent) {
-
+        if (!txtSearch.getText().equals("")){
+            listViewFilms.setItems(FXCollections.observableArrayList(filmManager.getAllByPartOfName(txtSearch.getText())));
+        }
+        else {
+            listViewFilms.setItems(FXCollections.observableArrayList(filmManager.getAll()));
+        }
     }
 
     public void btnDetailsClicked(ActionEvent actionEvent) {
@@ -79,6 +85,7 @@ public class MainWindowController implements Initializable {
             info.setScene(new Scene(parent));
             FilmInfoController filmInfoController = loader.getController();
             filmInfoController.setFilm(item);
+            filmInfoController.setUserManager(userManager);
             info.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();

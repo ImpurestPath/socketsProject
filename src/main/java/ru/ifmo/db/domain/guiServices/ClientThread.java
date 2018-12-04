@@ -36,6 +36,7 @@ public class ClientThread extends Thread {
             out = new ObjectOutputStream(socket.getOutputStream());
             out.flush();
             in = new ObjectInputStream(socket.getInputStream());
+
             Commands command;
             Film film;
             User user;

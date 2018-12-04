@@ -1,8 +1,10 @@
 package ru.ifmo.db.domain.dataAccessServices.dataAccessDTO;
 
+import ru.ifmo.db.domain.Cost;
+
 import java.io.Serializable;
 
-public class SubscriptionCostDTO implements Serializable {
+public class SubscriptionCostDTO implements Serializable, Cost {
     private final int id;
     private final int duration;
     private final double cost;

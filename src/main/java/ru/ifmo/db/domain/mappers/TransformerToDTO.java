@@ -5,7 +5,7 @@ import ru.ifmo.db.domain.guiServices.domainDTO.*;
 
 public class TransformerToDTO {
     public static FilmDTO toFilm(Film film){
-        return new FilmDTO(film.getId(),film.getName(),film.getYear(),film.getRegisseur(),film.getRating());
+        return new FilmDTO(film.getId(),film.getName(),film.getYear(),film.getRegisseur(),film.getRating(),film.getPositiveReviews(),film.getNeutralReviews(),film.getNegativeReviews());
     }
     public static SubscriptionDTO toSubscription(Subscription subscription){
         return new SubscriptionDTO(subscription.getId(),subscription.getName());

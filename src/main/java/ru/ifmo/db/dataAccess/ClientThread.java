@@ -255,6 +255,23 @@ public class ClientThread extends Thread {
                         in.close();
                         out.close();
                         throw new Exception();
+                    case GET_ALL_USER_FILMS:
+                        id = in.readInt();
+                        out.writeObject(connection.getUserFilms(id));
+                        out.flush();
+                        break;
+                    case GET_USER_SUBSCRIPTION:
+
+                        break;
+                    case GET_USER_FILM:
+                        //TODO Finish
+                        break;
+
+                    case GET_ALL_USER_SUBSCRIPTIONS:
+                        id = in.readInt();
+                        out.writeObject(connection.getUserSubscriptions(id));
+                        out.flush();
+                        break;
                 }
                 out.writeObject(Commands.FINISHED);
                 out.flush(); // заставляем поток закончить передачу данных.

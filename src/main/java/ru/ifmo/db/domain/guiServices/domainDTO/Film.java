@@ -11,26 +11,34 @@ public class Film  implements Serializable,hasId {
     private final short year;
     private final String regisseur;
     private final short rating;
+    private final int positiveReviews;
+    private final int neutralReviews;
+    private final int negativeReviews;
     private final List<Integer> genres;
     private final List<Integer> actors;
     private final List<FilmCostDTO> costs;
     private final List<Integer> subscriptions;
 
-    public Film(
-            int id,
-            String name,
-            short year,
-            String regisseur,
-            short rating,
-            List<Integer> genres,
-            List<Integer> actors,
-            List<FilmCostDTO> costs,
-            List<Integer> subscriptions) {
+    public Film(int id,
+                String name,
+                short year,
+                String regisseur,
+                short rating,
+                int positiveReviews,
+                int neutralReviews,
+                int negativeReviews,
+                List<Integer> genres,
+                List<Integer> actors,
+                List<FilmCostDTO> costs,
+                List<Integer> subscriptions) {
         this.id = id;
         this.name = name;
         this.year = year;
         this.regisseur = regisseur;
         this.rating = rating;
+        this.positiveReviews = positiveReviews;
+        this.neutralReviews = neutralReviews;
+        this.negativeReviews = negativeReviews;
         this.genres = genres;
         this.actors = actors;
         this.costs = costs;
@@ -71,5 +79,17 @@ public class Film  implements Serializable,hasId {
 
     public List<Integer> getSubscriptions() {
         return subscriptions;
+    }
+
+    public int getPositiveReviews() {
+        return positiveReviews;
+    }
+
+    public int getNeutralReviews() {
+        return neutralReviews;
+    }
+
+    public int getNegativeReviews() {
+        return negativeReviews;
     }
 }

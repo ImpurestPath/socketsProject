@@ -18,7 +18,7 @@ public class SQLUser implements UserDAO {
     public UserDTO getByName(String userName) {
         try (PreparedStatement preparedStatement =
                      connection.prepareStatement("SELECT idUser, [Name], Balance FROM [User] WHERE [Name] = ?")) {
-            preparedStatement.setString(1, '\'' + userName + '\'');
+            preparedStatement.setString(1,  userName );
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
             return new UserDTO(resultSet.getInt(1), resultSet.getString(2), resultSet.getDouble(3));

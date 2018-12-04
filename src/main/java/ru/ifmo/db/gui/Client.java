@@ -1,5 +1,8 @@
 package ru.ifmo.db.gui;
 
+import ru.ifmo.db.domain.Cost;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
 import ru.ifmo.db.domain.guiServices.domainDTO.*;
 import ru.ifmo.db.domain.guiServices.domainDTO.Actor;
 import ru.ifmo.db.domain.guiServices.domainDTO.Film;
@@ -32,9 +35,10 @@ public class Client {
             Socket socket = new Socket(ipAddress, serverPort); // создаем сокет используя IP-адрес и порт сервера.
             System.out.println("Yes! I just got hold of the program.");
 
-            in = new ObjectInputStream(socket.getInputStream());
             out = new ObjectOutputStream(socket.getOutputStream());
             out.flush();
+            in = new ObjectInputStream(socket.getInputStream());
+
 
         } catch (Exception x) {
             x.printStackTrace();
@@ -165,5 +169,21 @@ public class Client {
             e.printStackTrace();
             return null;
         }
+    }
+    public <T extends Cost> void buy(int idUser, T obj) throws Exception{
+        if (obj.getClass() == FilmCostDTO.class){
+            out.writeObject(ADD_USER_FILM);
+            out.flush();
+        }
+        else if (obj.getClass() == SubscriptionCostDTO.class){
+            out.writeObject(ADD_USER_SUBSCRIPTION);
+            out.flush();
+        }
+        else throw new Exception();
+        out.writeInt(idUser);
+        out.flush();
+        out.writeInt(obj.getId());
+        out.flush();
+        if (in.readObject() != FINISHED) throw new Exception();
     }
 }

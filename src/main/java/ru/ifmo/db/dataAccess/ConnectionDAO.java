@@ -99,4 +99,7 @@ public interface ConnectionDAO {
 
     UserDTO getUser(String userName);
 
+    List<UserPurchaseDTO> getUserFilms(int idUser);
+
+    List<UserPurchaseDTO> getUserSubscriptions(int idUser);
 }

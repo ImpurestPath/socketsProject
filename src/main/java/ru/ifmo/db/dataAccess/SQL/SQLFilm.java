@@ -24,7 +24,7 @@ public class SQLFilm implements FilmDAO {
 
     public List<FilmDTO> getAll() {
         try (PreparedStatement preparedStatement =
-                     connection.prepareStatement("SELECT idFilm,Name,Year,Reggiseur,Rating FROM Film")) {
+                     connection.prepareStatement("SELECT idFilm,Name,Year,Reggiseur,Rating,[Positive reviews],[Neutral reviews],[Negative reviews] FROM Film")) {
             ResultSet resultSet = preparedStatement.executeQuery();
             List<FilmDTO> films = new ArrayList<>();
             while (resultSet.next()) {
@@ -33,7 +33,10 @@ public class SQLFilm implements FilmDAO {
                         resultSet.getString(2),
                         resultSet.getShort(3),
                         resultSet.getString(4),
-                        resultSet.getShort(5)));
+                        resultSet.getShort(5),
+                        resultSet.getInt(6),
+                        resultSet.getInt(7),
+                        resultSet.getInt(8)));
             }
             return films;
         } catch (Exception e) {
@@ -45,7 +48,7 @@ public class SQLFilm implements FilmDAO {
     public FilmDTO getById(int id) {
         try (PreparedStatement preparedStatement =
                      connection.prepareStatement(
-                             "SELECT idFilm,Name,Year,Reggiseur,Rating FROM Film WHERE idFilm = ?")) {
+                             "SELECT idFilm,Name,Year,Reggiseur,Rating,[Positive reviews],[Neutral reviews],[Negative reviews] FROM Film WHERE idFilm = ?")) {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -54,7 +57,10 @@ public class SQLFilm implements FilmDAO {
                     resultSet.getString(2),
                     resultSet.getShort(3),
                     resultSet.getString(4),
-                    resultSet.getShort(5));
+                    resultSet.getShort(5),
+                    resultSet.getInt(6),
+                    resultSet.getInt(7),
+                    resultSet.getInt(8));
         } catch (Exception e) {
             e.printStackTrace();
             return null;

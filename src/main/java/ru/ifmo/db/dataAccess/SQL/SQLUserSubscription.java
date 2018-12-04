@@ -19,7 +19,7 @@ public class SQLUserSubscription implements UserPurchaseDAO {
     }
 
     @Override
-    public List<UserPurchaseDTO> getById(int idTypeOfPurchase, int idUser) {
+    public List<UserPurchaseDTO> getById( int idUser,int idTypeOfPurchase) {
         try (PreparedStatement preparedStatement =
                      connection.prepareStatement("SELECT StartDate, EndDate  " +
                              "FROM [Purchased Subscriptions] " +

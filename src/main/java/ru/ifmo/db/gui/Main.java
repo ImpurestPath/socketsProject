@@ -30,6 +30,10 @@ public class Main extends Application {
         FilmManager filmManager = new FilmManager(client,actorManager,genreManager);
         MainWindowController mainWindowController = loader.getController();
         mainWindowController.setFilms(filmManager.getAll());
+        mainWindowController.setFilmManager(filmManager);
+        UserManager userManager = new UserManager(client);
+        userManager.setNow(userManager.getByName("Admin"));
+        mainWindowController.setUserManager(userManager);
         Scene scene = new Scene(root);
         stage.setMinHeight(720);
         stage.setMinWidth(1080);
