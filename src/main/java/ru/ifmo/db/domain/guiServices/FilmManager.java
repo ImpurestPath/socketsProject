@@ -10,7 +10,7 @@ import ru.ifmo.db.domain.mappers.TransformerToEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilmManager implements Manager<Film>{
+public class FilmManager implements Manager<Film> {
     private final Client client;
 
     FilmManager(Client client) {
@@ -55,20 +55,27 @@ public class FilmManager implements Manager<Film>{
     public void update(Film film) {
         Film original = getById(film.getId());
         client.updateFilm(film.getId(), TransformerToDTO.toFilm(film));
+
         for (int genre : film.getGenres())
             if (!original.getGenres().contains(genre)) client.addFilmGenre(film.getId(), genre);
+
         for (int actor : film.getActors())
             if (!original.getActors().contains(actor)) client.addFilmActor(film.getId(), actor);
+
         for (int subscription : film.getSubscriptions())
             if (!original.getSubscriptions().contains(subscription))
                 client.addFilmGenre(film.getId(), subscription);
+
         for (int genre : original.getGenres())
             if (!film.getGenres().contains(genre)) client.addFilmGenre(film.getId(), genre);
+
         for (int actor : original.getActors())
             if (!film.getActors().contains(actor)) client.addFilmActor(film.getId(), actor);
+
         for (int subscription : original.getSubscriptions())
             if (!film.getSubscriptions().contains(subscription))
                 client.addFilmGenre(film.getId(), subscription);
+
         List<FilmCostDTO> updated = new ArrayList<>();
         for (FilmCostDTO cost : film.getCosts()) {
             if (cost.getId() == -1) client.addFilmCost(cost);
@@ -77,11 +84,13 @@ public class FilmManager implements Manager<Film>{
                 updated.add(cost);
             }
         }
+
         for (FilmCostDTO cost : original.getCosts()) {
             if (!updated.contains(cost) && !film.getCosts().contains(cost)) client.deleteFilmCost(cost.getId());
         }
     }
-    public void delete(int id){
+
+    public void delete(int id) {
         client.deleteFilm(id);
     }
 }

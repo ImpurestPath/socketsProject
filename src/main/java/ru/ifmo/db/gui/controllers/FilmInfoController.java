@@ -66,7 +66,7 @@ public class FilmInfoController implements Initializable {
     public void btnBuyFilmClicked(ActionEvent actionEvent) {
         FilmCostDTO cost = (FilmCostDTO) tableViewCost.getSelectionModel().getSelectedItem();
         try {
-            userManager.buy(userManager.getNow(),cost);
+            userManager.buy(userManager.getCurrent(),cost);
         }catch (Exception e){
             e.printStackTrace();
         }

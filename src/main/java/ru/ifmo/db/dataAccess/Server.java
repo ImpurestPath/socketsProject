@@ -9,9 +9,9 @@ import java.net.Socket;
 public class Server {
     Server() {
         ConnectionDAO connection = new SQLConnection();
-        int port = 3567; // случайный порт (может быть любое число от 1025 до 65535)
+        int port = 3567; //от 1025 до 65535
         try {
-            ServerSocket ss = new ServerSocket(port); // создаем сокет сервера и привязываем его к вышеуказанному порту
+            ServerSocket ss = new ServerSocket(port);
             System.out.println("Waiting for a client...");
             while (true) {
                 Socket client = null;

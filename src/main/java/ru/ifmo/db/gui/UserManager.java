@@ -4,13 +4,12 @@ package ru.ifmo.db.gui;
 import ru.ifmo.db.domain.Cost;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
-import ru.ifmo.db.domain.guiServices.domainDTO.hasId;
 import ru.ifmo.db.gui.mappers.TransformerToEntity;
 import ru.ifmo.db.gui.mappers.TransformerToGUI;
 
 public class UserManager implements Manager<User> {
     private Client client;
-    private User now;
+    private User current;
 
     public UserManager(Client client) {
         this.client = client;
@@ -25,12 +24,12 @@ public class UserManager implements Manager<User> {
         client.buy(user.getId(),cost);
     }
 
-    public void setNow(User now) {
-        this.now = now;
+    public void setCurrent(User current) {
+        this.current = current;
     }
 
-    public User getNow() {
-        return now;
+    public User getCurrent() {
+        return current;
     }
 
     @Override

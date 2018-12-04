@@ -14,7 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import ru.ifmo.db.gui.Actor;
 import ru.ifmo.db.gui.Film;
-import ru.ifmo.db.gui.FilmManager;
+import ru.ifmo.db.gui.FilmRepository;
 import ru.ifmo.db.gui.UserManager;
 import ru.ifmo.db.gui.listCell.FilmListCell;
 
@@ -31,7 +31,7 @@ public class MainWindowController implements Initializable {
     public TableColumn tableColumnGenres;
     public ListView listViewFilms;
     public TextField txtSearch;
-    public FilmManager filmManager;
+    public FilmRepository filmRepository;
     public UserManager userManager;
 
     @Override
@@ -55,8 +55,8 @@ public class MainWindowController implements Initializable {
             return listCell;
         });
     }
-    public void setFilmManager(FilmManager filmManager){
-        this.filmManager = filmManager;
+    public void setFilmRepository(FilmRepository filmRepository){
+        this.filmRepository = filmRepository;
     }
     public void setUserManager(UserManager userManager) {this.userManager = userManager;}
 
@@ -66,10 +66,10 @@ public class MainWindowController implements Initializable {
 
     public void btnSearchClicked(ActionEvent actionEvent) {
         if (!txtSearch.getText().equals("")){
-            listViewFilms.setItems(FXCollections.observableArrayList(filmManager.getAllByPartOfName(txtSearch.getText())));
+            listViewFilms.setItems(FXCollections.observableArrayList(filmRepository.getAllByPartOfName(txtSearch.getText())));
         }
         else {
-            listViewFilms.setItems(FXCollections.observableArrayList(filmManager.getAll()));
+            listViewFilms.setItems(FXCollections.observableArrayList(filmRepository.getAll()));
         }
     }
 
@@ -90,5 +90,13 @@ public class MainWindowController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void btnClearClicked(ActionEvent actionEvent) {
+        listViewFilms.setItems(FXCollections.observableArrayList(filmRepository.getAll()));
+    }
+
+    public void btnMyFilmsClicked(ActionEvent actionEvent) {
+        listViewFilms.setItems(FXCollections.observableArrayList(filmRepository.getUserFilms(userManager.getCurrent())));
     }
 }

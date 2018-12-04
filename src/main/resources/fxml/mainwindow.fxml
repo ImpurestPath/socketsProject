@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +18,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ifmo.db.gui.controllers.MainWindowController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="834.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.ifmo.db.gui.controllers.MainWindowController">
    <right>
       <VBox maxWidth="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="163.0" BorderPane.alignment="CENTER">
          <children>
@@ -62,8 +66,10 @@
       <AnchorPane BorderPane.alignment="CENTER">
          <children>
             <ListView fx:id="listViewFilms" layoutX="81.0" layoutY="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
-            <Button layoutX="377.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnSearchClicked" text="Search" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0" />
-            <TextField fx:id="txtSearch" layoutX="219.0" layoutY="8.0" promptText="What do you want?" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="8.0" />
+            <Button layoutX="377.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnSearchClicked" prefWidth="60.0" text="Search" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="8.0" />
+            <TextField fx:id="txtSearch" layoutX="219.0" layoutY="8.0" promptText="What do you want?" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="8.0" />
+            <Button layoutX="336.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnClearClicked" prefWidth="60.0" text="Clear" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="8.0" />
+            <Button layoutX="310.0" layoutY="8.0" mnemonicParsing="false" onAction="#btnMyFilmsClicked" text="My films" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="8.0" />
          </children>
       </AnchorPane>
    </center>

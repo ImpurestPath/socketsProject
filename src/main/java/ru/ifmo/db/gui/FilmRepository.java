@@ -1,22 +1,21 @@
 package ru.ifmo.db.gui;
 
 import javafx.collections.FXCollections;
+import javafx.concurrent.Task;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.UserPurchaseDTO;
 import ru.ifmo.db.gui.mappers.TransformerToEntity;
 import ru.ifmo.db.gui.mappers.TransformerToGUI;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class FilmManager implements Manager<Film> {
+public class FilmRepository implements Manager<Film> {
     private Client client;
     private ActorManager actorManager;
     private GenreManager genreManager;
     private Map<Integer,Film> films = null;
 
 
-    public FilmManager(Client client, ActorManager actorManager, GenreManager genreManager) {
+    public FilmRepository(Client client, ActorManager actorManager, GenreManager genreManager) {
         this.client = client;
         this.actorManager = actorManager;
         this.genreManager = genreManager;
@@ -34,8 +33,34 @@ public class FilmManager implements Manager<Film> {
         }
         return foundFilms;
     }
-    public void updateAll(){
-        List<ru.ifmo.db.domain.guiServices.domainDTO.Film> filmDTOs = client.getAll(ru.ifmo.db.domain.guiServices.domainDTO.Film.class);
+    public List<Film> getUserFilms(User user){
+        List<Film> foundFilms = new ArrayList<>();
+        Date now = new Date();
+        for (UserPurchaseDTO userPurchaseDTO : user.getFilms()){
+            Film film = films.get(userPurchaseDTO.getIdPurchase());
+            if ( userPurchaseDTO.getFinish().after(now) && !foundFilms.contains(film))
+                foundFilms.add(film);
+        }
+        return foundFilms;
+    }
+    public class Loader extends Task<Map<Integer,Film>>{
+        @Override
+        protected Map<Integer, Film> call() {
+            List<ru.ifmo.db.domain.guiServices.domainDTO.Film> filmDTOs = client.getAll(ru.ifmo.db.domain.guiServices.domainDTO.Film.class);
+            Map<Integer,Film> newFilms = new HashMap<>();
+            for (ru.ifmo.db.domain.guiServices.domainDTO.Film film : filmDTOs) {
+                List<Actor> actorsGUI = new ArrayList<>();
+                List<Genre> genreGUI = new ArrayList<>();
+                for (int i : film.getActors()) actorsGUI.add(actorManager.getById(i));
+                for (int i : film.getGenres()) genreGUI.add(genreManager.getById(i));
+                newFilms.put(film.getId(),TransformerToGUI.toFilm(client.get(film.getId(), ru.ifmo.db.domain.guiServices.domainDTO.Film.class), actorsGUI, genreGUI));
+            }
+            films = newFilms;
+            return newFilms;
+        }
+    }
+    public void updateAll()  {
+        /*List<ru.ifmo.db.domain.guiServices.domainDTO.Film> filmDTOs = client.getAll(ru.ifmo.db.domain.guiServices.domainDTO.Film.class);
         Map<Integer,Film> newFilms = new HashMap<>();
         for (ru.ifmo.db.domain.guiServices.domainDTO.Film film : filmDTOs) {
             List<Actor> actorsGUI = new ArrayList<>();
@@ -43,8 +68,14 @@ public class FilmManager implements Manager<Film> {
             for (int i : film.getActors()) actorsGUI.add(actorManager.getById(i));
             for (int i : film.getGenres()) genreGUI.add(genreManager.getById(i));
             newFilms.put(film.getId(),TransformerToGUI.toFilm(client.get(film.getId(), ru.ifmo.db.domain.guiServices.domainDTO.Film.class), actorsGUI, genreGUI));
+        }*/
+        Thread t = new Thread(new Loader());
+        t.start();
+        try {
+            t.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        this.films = newFilms;
     }
     @Override
     public Film getById(int id) {
