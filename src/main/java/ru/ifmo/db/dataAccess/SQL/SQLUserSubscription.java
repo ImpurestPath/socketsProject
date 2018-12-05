@@ -2,6 +2,7 @@ package ru.ifmo.db.dataAccess.SQL;
 
 import ru.ifmo.db.dataAccess.DAO.UserPurchaseDAO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.*;
+import ru.ifmo.db.domain.guiServices.domainDTO.Subscription;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,7 +33,8 @@ public class SQLUserSubscription implements UserPurchaseDAO {
                         idTypeOfPurchase,
                         idUser,
                         resultSet.getTimestamp(1),
-                        resultSet.getTimestamp(2)));
+                        resultSet.getTimestamp(2),
+                        UserPurchaseDTO.Type.SUBSCRIPTION));
             }
             return subscriptionCosts;
         } catch (Exception e) {
@@ -82,7 +84,8 @@ public class SQLUserSubscription implements UserPurchaseDAO {
                         resultSet.getInt(1),
                         id,
                         resultSet.getTimestamp(2),
-                        resultSet.getTimestamp(3)));
+                        resultSet.getTimestamp(3),
+                        UserPurchaseDTO.Type.SUBSCRIPTION));
             }
             return subscriptionCosts;
         } catch (Exception e) {

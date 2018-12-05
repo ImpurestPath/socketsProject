@@ -31,6 +31,7 @@ public class FilmInfoController implements Initializable {
     public TableColumn tableColumnDuration;
     public Label lblName;
     public Label lblRating;
+    public Label lblBuy;
     private Film film;
     private UserManager userManager;
 
@@ -65,10 +66,14 @@ public class FilmInfoController implements Initializable {
 
     public void btnBuyFilmClicked(ActionEvent actionEvent) {
         FilmCostDTO cost = (FilmCostDTO) tableViewCost.getSelectionModel().getSelectedItem();
+        if (cost == null) return;
         try {
             userManager.buy(userManager.getCurrent(),cost);
+            lblBuy.setText("Successfully");
         }catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("Exception. At btnBuyFilmClicked");
+            lblBuy.setText("No enough money");
         }
     }
 

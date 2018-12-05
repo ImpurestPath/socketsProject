@@ -1,5 +1,6 @@
 package ru.ifmo.db.gui.controllers;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import ru.ifmo.db.gui.Main;
 import ru.ifmo.db.gui.entity.Actor;
 import ru.ifmo.db.gui.entity.Film;
 import ru.ifmo.db.gui.FilmRepository;
@@ -108,12 +110,17 @@ public class MainWindowController implements Initializable {
             FXMLLoader profile = new FXMLLoader(getClass().getResource("/fxml/user.fxml"));
             Parent parent = profile.load();
             info.setScene(new Scene(parent));
-            FilmInfoController filmInfoController = profile.getController();
-            filmInfoController.setFilm(item);
-            filmInfoController.setUserManager(userManager);
+            UserController userController = profile.getController();
+            userController.setUserManager(userManager);
+            userController.setFilmRepository(filmRepository);
+            userController.load();
             info.showAndWait();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void btnExitClicked(ActionEvent actionEvent) {
+        Platform.runLater(Main::loadNext);
     }
 }

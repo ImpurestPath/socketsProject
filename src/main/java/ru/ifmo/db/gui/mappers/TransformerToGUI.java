@@ -33,6 +33,7 @@ public class TransformerToGUI {
     }
 
     public static User toUser(ru.ifmo.db.domain.guiServices.domainDTO.User user) {
+        if (user == null) return null;
         return new User(user.getId(), user.getUsername(), user.getBalance(), user.getFilms(), user.getSubscriptions());
     }
 }

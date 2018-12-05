@@ -10,6 +10,7 @@ import ru.ifmo.db.domain.guiServices.domainDTO.Genre;
 import ru.ifmo.db.domain.guiServices.domainDTO.User;
 import ru.ifmo.db.domain.guiServices.domainDTO.Subscription;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -23,6 +24,7 @@ public class Client {
     private static Client instanse = null;
     private ObjectInputStream in;
     private ObjectOutputStream out;
+    private Socket socket;
 
     private Client() {
         int serverPort = 3568; // здесь обязательно нужно указать порт к которому привязывается сервер.
@@ -31,7 +33,7 @@ public class Client {
         try {
             InetAddress ipAddress = InetAddress.getByName(address); // создаем объект который отображает вышеописанный IP-адрес.
             System.out.println("Any of you heard of a socket with IP address " + address + " and port " + serverPort + "?");
-            Socket socket = new Socket(ipAddress, serverPort); // создаем сокет используя IP-адрес и порт сервера.
+            this.socket = new Socket(ipAddress, serverPort); // создаем сокет используя IP-адрес и порт сервера.
             System.out.println("Yes! I just got hold of the program.");
 
             out = new ObjectOutputStream(socket.getOutputStream());
@@ -48,24 +50,37 @@ public class Client {
         if (instanse == null) return new Client();
         else return instanse;
     }
-
+    public static void close(){
+        if (instanse != null) {
+            try {
+                instanse.socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     public <T extends Serializable> int add(T t) {
         try {
+            int id;
             if (t.getClass() == Film.class) {
                 out.writeObject(ADD_FILM);
+                id = in.readInt();
             } else if (t.getClass() == Actor.class) {
                 out.writeObject(ADD_ACTOR);
+                id = -2;
             } else if (t.getClass() == Genre.class) {
                 out.writeObject(ADD_GENRE);
+                id = -2;
             } else if (t.getClass() == User.class) {
                 out.writeObject(ADD_USER);
+                id = -2;
             } else if (t.getClass() == Subscription.class) {
                 out.writeObject(ADD_SUBSCRIPTION);
+                id = -2;
             } else return -1;
             out.flush();
             out.writeObject(t);
             out.flush();
-            int id = in.readInt();
             if (in.readObject() != FINISHED) throw new Exception();
             return id;
         } catch (Exception e) {

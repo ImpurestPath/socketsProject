@@ -32,7 +32,8 @@ public class SQLUserFilm implements UserPurchaseDAO {
                         idTypeOfPurchase,
                         idUser,
                         resultSet.getTimestamp(1),
-                        resultSet.getTimestamp(2)));
+                        resultSet.getTimestamp(2),
+                        UserPurchaseDTO.Type.FILM));
             }
             return subscriptionCosts;
         } catch (Exception e) {
@@ -82,7 +83,8 @@ public class SQLUserFilm implements UserPurchaseDAO {
                         resultSet.getInt(1),
                         id,
                         resultSet.getTimestamp(2),
-                        resultSet.getTimestamp(3)));
+                        resultSet.getTimestamp(3),
+                        UserPurchaseDTO.Type.FILM));
             }
             return subscriptionCosts;
         } catch (Exception e) {

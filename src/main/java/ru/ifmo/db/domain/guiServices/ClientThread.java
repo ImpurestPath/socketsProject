@@ -89,7 +89,7 @@ public class ClientThread extends Thread {
                         break;
                     case UPDATE_FILM:
                         film = (Film) in.readObject();
-                        out.flush();
+                        //out.flush();
                         filmManager.update(film);
 
                         break;

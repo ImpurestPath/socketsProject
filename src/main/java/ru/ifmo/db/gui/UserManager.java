@@ -23,6 +23,7 @@ public class UserManager implements Manager<User> {
         if (cost.getClass() != FilmCostDTO.class && cost.getClass() != SubscriptionCostDTO.class) throw new Exception();
         if (user.getBalance() < cost.getCost()) throw new Exception();
         client.buy(user.getId(),cost);
+        current = getByName(user.getUsername());
     }
 
     public void setCurrent(User current) {
