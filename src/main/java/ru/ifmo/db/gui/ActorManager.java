@@ -11,7 +11,7 @@ public class ActorManager implements Manager<Actor> {
     private Client client;
     private Map<Integer, Actor> actors;
 
-    public ActorManager(Client client) {
+    ActorManager(Client client) {
         this.client = client;
         this.actors = new HashMap<>();
     }

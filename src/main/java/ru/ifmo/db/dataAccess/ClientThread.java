@@ -8,8 +8,7 @@ import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.*;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-
-public class ClientThread extends Thread {
+class ClientThread extends Thread {
     private Socket socket;
     private ConnectionDAO connection;
 

@@ -11,7 +11,7 @@ public class GenreManager implements Manager<Genre> {
     private Client client;
     private Map<Integer, Genre> genres;
 
-    public GenreManager(Client client) {
+    GenreManager(Client client) {
         this.client = client;
         this.genres = new HashMap<>();
     }

@@ -14,7 +14,7 @@ import java.util.List;
 public class SQLUserSubscription implements UserPurchaseDAO {
     private Connection connection;
 
-    public SQLUserSubscription(Connection connection) {
+    SQLUserSubscription(Connection connection) {
         this.connection = connection;
     }
 

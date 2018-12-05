@@ -13,7 +13,7 @@ import java.util.List;
 public class SQLFilmCost implements FilmCostDAO {
     private Connection connection;
 
-    public SQLFilmCost(Connection connection) {
+    SQLFilmCost(Connection connection) {
         this.connection = connection;
     }
 

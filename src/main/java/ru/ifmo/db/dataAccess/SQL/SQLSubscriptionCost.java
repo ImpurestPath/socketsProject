@@ -12,7 +12,7 @@ import java.util.List;
 public class SQLSubscriptionCost implements SubscriptionCostDAO {
     private Connection connection;
 
-    public SQLSubscriptionCost(Connection connection) {
+    SQLSubscriptionCost(Connection connection) {
         this.connection = connection;
     }
 

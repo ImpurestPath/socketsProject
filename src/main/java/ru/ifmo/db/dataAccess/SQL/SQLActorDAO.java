@@ -13,7 +13,7 @@ import java.util.List;
 public class SQLActorDAO implements ActorDAO {
     private Connection connection;
 
-    public SQLActorDAO(Connection connection) {
+    SQLActorDAO(Connection connection) {
         this.connection = connection;
     }
 

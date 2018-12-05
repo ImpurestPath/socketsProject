@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 public class SQLUser implements UserDAO {
     private Connection connection;
 
-    public SQLUser(Connection connection) {
+    SQLUser(Connection connection) {
         this.connection = connection;
     }
 

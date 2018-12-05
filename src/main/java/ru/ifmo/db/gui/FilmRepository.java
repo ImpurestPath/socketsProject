@@ -18,7 +18,7 @@ public class FilmRepository implements Manager<Film> {
     private Map<Integer,Film> films = null;
 
 
-    public FilmRepository(Client client, ActorManager actorManager, GenreManager genreManager) {
+    FilmRepository(Client client, ActorManager actorManager, GenreManager genreManager) {
         this.client = client;
         this.actorManager = actorManager;
         this.genreManager = genreManager;
@@ -62,7 +62,7 @@ public class FilmRepository implements Manager<Film> {
             return newFilms;
         }
     }
-    public void updateAll()  {
+    private void updateAll()  {
         /*List<ru.ifmo.db.domain.guiServices.domainDTO.Film> filmDTOs = client.getAll(ru.ifmo.db.domain.guiServices.domainDTO.Film.class);
         Map<Integer,Film> newFilms = new HashMap<>();
         for (ru.ifmo.db.domain.guiServices.domainDTO.Film film : filmDTOs) {
@@ -88,7 +88,7 @@ public class FilmRepository implements Manager<Film> {
             return films.get(id);
         }
     }
-    public void updateById(int id){
+    private void updateById(int id){
         ru.ifmo.db.domain.guiServices.domainDTO.Film film = client.get(id, ru.ifmo.db.domain.guiServices.domainDTO.Film.class);
         List<Actor> actorsGUI = new ArrayList<>();
         List<Genre> genreGUI = new ArrayList<>();

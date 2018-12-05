@@ -16,7 +16,7 @@ public class SQLSubscription implements SubscriptionDAO {
     private Connection connection;
     private SubscriptionCostDAO subscriptionCostDAO;
 
-    public SQLSubscription(Connection connection) {
+    SQLSubscription(Connection connection) {
         this.connection = connection;
         this.subscriptionCostDAO = new SQLSubscriptionCost(connection);
     }

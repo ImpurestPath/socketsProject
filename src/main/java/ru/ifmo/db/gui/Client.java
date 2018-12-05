@@ -46,11 +46,11 @@ public class Client {
         }
     }
 
-    public static Client getInstance() {
+    static Client getInstance() {
         if (instanse == null) return new Client();
         else return instanse;
     }
-    public static void close(){
+    static void close(){
         if (instanse != null) {
             try {
                 instanse.socket.close();
@@ -132,8 +132,8 @@ public class Client {
             e.printStackTrace();
         }
     }
-
-    public <T, C> C get(T id, Class<?> C) {
+    @SuppressWarnings("unchecked")
+    <T, C> C get(T id, Class<?> C) {
         try {
             if (id.getClass() == Integer.class) {
                 if (C == Film.class) {
@@ -166,7 +166,7 @@ public class Client {
             return null;
         }
     }
-
+    @SuppressWarnings("unchecked")
     public <C> List<C> getAll(Class<?> C) {
         try {
             if (C == Film.class) {
@@ -184,7 +184,7 @@ public class Client {
             return null;
         }
     }
-    public <T extends hasCost> void buy(int idUser, T obj) throws Exception{
+    <T extends hasCost> void buy(int idUser, T obj) throws Exception{
         if (obj.getClass() == FilmCostDTO.class){
             out.writeObject(ADD_USER_FILM);
             out.flush();

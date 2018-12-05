@@ -29,7 +29,7 @@ public class Client {
         }
     }
 
-    <T extends Serializable> int addObject(T object) {
+    private <T extends Serializable> int addObject(T object) {
         if (object.getClass() == ActorDTO.class) {
             return sendObject(ADD_ACTOR, object);
         } else if (object.getClass() == FilmCostDTO.class) {
@@ -63,7 +63,7 @@ public class Client {
         }
     }
 
-    <T extends Serializable> void sendIntAndObject(Commands command, int id, T object) {
+    private <T extends Serializable> void sendIntAndObject(Commands command, int id, T object) {
         try {
             out.writeObject(command);
             out.flush();
@@ -109,7 +109,7 @@ public class Client {
             e.printStackTrace();
         }
     }
-
+    @SuppressWarnings("unchecked")
     private List<Integer> readIntegers(Commands getSubscriptionFilms, int id) {
         try {
             out.writeObject(getSubscriptionFilms);
@@ -251,7 +251,7 @@ public class Client {
     public void deleteSubscriptionFilm(int idSubscription, int idFilm) {
         sendTwoInt(DELETE_SUBSCRIPTION_FILM, idSubscription, idFilm);
     }
-
+    @SuppressWarnings("unchecked")
     public List<FilmDTO> getAllFilms() {
         try {
             out.writeObject(GET_ALL_FILMS);
@@ -283,7 +283,7 @@ public class Client {
             return null;
         }
     }
-
+    @SuppressWarnings("unchecked")
     public List<FilmCostDTO> getAllFilmCosts(int idFilm) {
         try {
             out.writeObject(GET_ALL_FILM_COSTS);
@@ -363,7 +363,7 @@ public class Client {
             return null;
         }
     }
-
+    @SuppressWarnings("unchecked")
     public List<SubscriptionDTO> getAllSubscriptions() {
         try {
             out.writeObject(GET_ALL_SUBSCRIPTIONS);
@@ -395,7 +395,7 @@ public class Client {
             return null;
         }
     }
-
+    @SuppressWarnings("unchecked")
     public List<SubscriptionCostDTO> getAllSubscriptionCosts(int idSubscription) {
         try {
             out.writeObject(GET_ALL_SUBSCRIPTION_COSTS);
@@ -450,7 +450,7 @@ public class Client {
             return null;
         }
     }
-
+    @SuppressWarnings("unchecked")
     public List<UserPurchaseDTO> getAllUserFilms(int idUser) {
         try {
             sendInt(GET_ALL_USER_FILMS, idUser);
@@ -464,7 +464,7 @@ public class Client {
             return null;
         }
     }
-
+    @SuppressWarnings("unchecked")
     public List<UserPurchaseDTO> getAllUserSubscriptions(int idUser) {
         try {
             sendInt(GET_ALL_USER_SUBSCRIPTIONS, idUser);
@@ -478,7 +478,7 @@ public class Client {
             return null;
         }
     }
-
+    @SuppressWarnings("unchecked")
     public List<UserPurchaseDTO> getUserFilm(int idUser, int idFilm) {
         try {
             sendTwoInt(GET_USER_FILM, idUser, idFilm);
@@ -492,7 +492,7 @@ public class Client {
             return null;
         }
     }
-
+    @SuppressWarnings("unchecked")
     public List<UserPurchaseDTO> getUserSubscription(int idUser, int idSubscription) {
         try {
             sendTwoInt(GET_USER_SUBSCRIPTION, idUser, idSubscription);

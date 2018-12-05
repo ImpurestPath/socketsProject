@@ -1,13 +1,11 @@
 package ru.ifmo.db.gui;
 
 import javafx.application.Application;
-import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.ifmo.db.gui.controllers.AuthController;
-import ru.ifmo.db.gui.controllers.LoadingController;
 import ru.ifmo.db.gui.controllers.MainWindowController;
 
 import java.util.ArrayList;

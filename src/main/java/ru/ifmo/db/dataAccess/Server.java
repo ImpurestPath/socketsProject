@@ -7,7 +7,7 @@ import ru.ifmo.db.dataAccess.SQL.SQLConnection;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
+class Server {
     Server() {
         ConnectionDAO connection = new SQLConnection();
         int port = 3567; //от 1025 до 65535

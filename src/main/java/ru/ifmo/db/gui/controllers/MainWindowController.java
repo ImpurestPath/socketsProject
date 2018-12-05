@@ -33,10 +33,11 @@ public class MainWindowController implements Initializable {
     public TableColumn tableColumnGenres;
     public ListView listViewFilms;
     public TextField txtSearch;
-    public FilmRepository filmRepository;
-    public UserManager userManager;
+    private FilmRepository filmRepository;
+    private UserManager userManager;
 
     @Override
+    @SuppressWarnings("unchecked")
     public void initialize(URL location, ResourceBundle resources) {
         tableColumnGenres.setCellValueFactory(new PropertyValueFactory<Actor, String>("name"));
         listViewFilms.setCellFactory(params -> {
@@ -61,11 +62,11 @@ public class MainWindowController implements Initializable {
         this.filmRepository = filmRepository;
     }
     public void setUserManager(UserManager userManager) {this.userManager = userManager;}
-
+    @SuppressWarnings("unchecked")
     public void setFilms(List<Film> films) {
         listViewFilms.setItems(FXCollections.observableArrayList(films));
     }
-
+    @SuppressWarnings("unchecked")
     public void btnSearchClicked(ActionEvent actionEvent) {
         if (!txtSearch.getText().equals("")){
             listViewFilms.setItems(FXCollections.observableArrayList(filmRepository.getAllByPartOfName(txtSearch.getText())));
@@ -93,11 +94,11 @@ public class MainWindowController implements Initializable {
             e.printStackTrace();
         }
     }
-
+    @SuppressWarnings("unchecked")
     public void btnClearClicked(ActionEvent actionEvent) {
         listViewFilms.setItems(FXCollections.observableArrayList(filmRepository.getAll()));
     }
-
+    @SuppressWarnings("unchecked")
     public void btnMyFilmsClicked(ActionEvent actionEvent) {
         listViewFilms.setItems(FXCollections.observableArrayList(filmRepository.getUserFilms(userManager.getCurrent())));
     }

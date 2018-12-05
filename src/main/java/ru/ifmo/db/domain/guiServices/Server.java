@@ -7,10 +7,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    private Client client;
 
     public Server(Client client) {
-        this.client = client;
         int port = 3568; // случайный порт (может быть любое число от 1025 до 65535)
         try {
             ServerSocket ss = new ServerSocket(port); // создаем сокет сервера и привязываем его к вышеуказанному порту

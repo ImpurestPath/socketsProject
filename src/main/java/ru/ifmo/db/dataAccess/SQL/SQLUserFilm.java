@@ -13,7 +13,7 @@ import java.util.List;
 public class SQLUserFilm implements UserPurchaseDAO {
     private Connection connection;
 
-    public SQLUserFilm(Connection connection) {
+    SQLUserFilm(Connection connection) {
         this.connection = connection;
     }
 

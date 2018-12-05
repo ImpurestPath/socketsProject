@@ -12,7 +12,7 @@ public class UserManager implements Manager<User> {
     private Client client;
     private User current;
 
-    public UserManager(Client client) {
+    UserManager(Client client) {
         this.client = client;
     }
 

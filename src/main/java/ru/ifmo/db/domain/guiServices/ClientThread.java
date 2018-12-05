@@ -22,7 +22,7 @@ public class ClientThread extends Thread {
     private ActorManager actorManager;
     private GenreManager genreManager;
 
-    public ClientThread(Socket socket, Client client) {
+    ClientThread(Socket socket, Client client) {
         this.socket = socket;
         this.client = client;
         this.filmManager = new FilmManager(client);

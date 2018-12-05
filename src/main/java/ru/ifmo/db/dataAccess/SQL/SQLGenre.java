@@ -13,7 +13,7 @@ import java.util.List;
 public class SQLGenre implements GenreDAO {
     private Connection connection;
 
-    public SQLGenre(Connection connection) {
+    SQLGenre(Connection connection) {
         this.connection = connection;
     }
 

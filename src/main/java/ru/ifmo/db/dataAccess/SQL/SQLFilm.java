@@ -17,7 +17,7 @@ public class SQLFilm implements FilmDAO {
     private Connection connection;
     private FilmCostDAO filmCostDAO;
 
-    public SQLFilm(Connection connection) {
+    SQLFilm(Connection connection) {
         this.connection = connection;
         this.filmCostDAO = new SQLFilmCost(connection);
     }
