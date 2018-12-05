@@ -1,4 +1,4 @@
-package ru.ifmo.db.domain.guiServices;
+package ru.ifmo.db.domain.guiServices.managers;
 
 import ru.ifmo.db.domain.dataAccessServices.Client;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
@@ -13,7 +13,7 @@ import java.util.List;
 public class FilmManager implements Manager<Film> {
     private final Client client;
 
-    FilmManager(Client client) {
+    public FilmManager(Client client) {
         this.client = client;
     }
 

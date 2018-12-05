@@ -11,8 +11,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
-import ru.ifmo.db.gui.Actor;
-import ru.ifmo.db.gui.Film;
+import ru.ifmo.db.gui.entity.Actor;
+import ru.ifmo.db.gui.entity.Film;
 import ru.ifmo.db.gui.UserManager;
 
 import java.net.URL;

@@ -1,6 +1,6 @@
 package ru.ifmo.db.dataAccess.SQL;
 
-import ru.ifmo.db.dataAccess.UserPurchaseDAO;
+import ru.ifmo.db.dataAccess.DAO.UserPurchaseDAO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.UserPurchaseDTO;
 
 import java.sql.Connection;

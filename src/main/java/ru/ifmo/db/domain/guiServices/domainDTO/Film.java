@@ -4,7 +4,8 @@ import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 
 import java.io.Serializable;
 import java.util.List;
-public class Film  implements Serializable,hasId {
+
+public class Film implements Serializable, hasId {
 
     private final int id;
     private final String name;

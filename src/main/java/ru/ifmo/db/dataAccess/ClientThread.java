@@ -1,6 +1,7 @@
 package ru.ifmo.db.dataAccess;
 
 
+import ru.ifmo.db.dataAccess.DAO.ConnectionDAO;
 import ru.ifmo.db.domain.dataAccessServices.Commands;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.*;
 

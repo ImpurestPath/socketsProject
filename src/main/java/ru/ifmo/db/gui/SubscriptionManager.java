@@ -1,5 +1,6 @@
 package ru.ifmo.db.gui;
 
+import ru.ifmo.db.gui.entity.Subscription;
 import ru.ifmo.db.gui.mappers.TransformerToEntity;
 import ru.ifmo.db.gui.mappers.TransformerToGUI;
 

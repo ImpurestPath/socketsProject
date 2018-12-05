@@ -2,7 +2,7 @@ package ru.ifmo.db.domain.guiServices.domainDTO;
 
 import java.io.Serializable;
 
-public class Genre implements Serializable,hasId {
+public class Genre implements Serializable, hasId {
     private final int id;
     private final String name;
 

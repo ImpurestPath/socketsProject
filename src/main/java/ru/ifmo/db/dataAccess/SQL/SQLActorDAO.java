@@ -1,6 +1,6 @@
 package ru.ifmo.db.dataAccess.SQL;
 
-import ru.ifmo.db.dataAccess.ActorDAO;
+import ru.ifmo.db.dataAccess.DAO.ActorDAO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.ActorDTO;
 
 

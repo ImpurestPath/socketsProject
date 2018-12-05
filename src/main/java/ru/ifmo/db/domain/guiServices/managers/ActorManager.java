@@ -1,4 +1,4 @@
-package ru.ifmo.db.domain.guiServices;
+package ru.ifmo.db.domain.guiServices.managers;
 
 import ru.ifmo.db.domain.dataAccessServices.Client;
 import ru.ifmo.db.domain.guiServices.domainDTO.Actor;
@@ -24,7 +24,7 @@ public class ActorManager implements Manager<Actor> {
 
     @Override
     public void update(Actor obj) {
-        client.updateActor(obj.getId(),TransformerToDTO.toActor(obj));
+        client.updateActor(obj.getId(), TransformerToDTO.toActor(obj));
     }
 
     @Override

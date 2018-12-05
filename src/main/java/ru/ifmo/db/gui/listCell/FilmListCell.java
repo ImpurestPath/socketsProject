@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import ru.ifmo.db.gui.Film;
+import ru.ifmo.db.gui.entity.Film;
 
 import java.io.IOException;
 

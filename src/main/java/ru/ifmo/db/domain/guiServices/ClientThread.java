@@ -2,12 +2,15 @@ package ru.ifmo.db.domain.guiServices;
 
 import ru.ifmo.db.domain.dataAccessServices.Client;
 import ru.ifmo.db.domain.guiServices.domainDTO.*;
+import ru.ifmo.db.domain.guiServices.managers.*;
 
 import static ru.ifmo.db.domain.guiServices.Commands.*;
 
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 
 public class ClientThread extends Thread {
@@ -53,7 +56,6 @@ public class ClientThread extends Thread {
                         film = (Film) in.readObject();
                         out.writeInt(filmManager.add(film));
                         out.flush();
-
                         break;
                     case ADD_ACTOR:
                         actor = (Actor) in.readObject();
@@ -171,12 +173,18 @@ public class ClientThread extends Thread {
                         out.flush();
                         break;
                     case ERROR:
-                        break;
                     case CLOSE_CONNECTION:
+                        socket.close();
                         break;
                 }
                 out.writeObject(FINISHED);
                 out.flush();
+            }
+        } catch (SocketException se){
+            try {
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,8 +1,7 @@
-package ru.ifmo.db.domain.guiServices;
+package ru.ifmo.db.domain.guiServices.managers;
 
 import ru.ifmo.db.domain.dataAccessServices.Client;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.UserDTO;
-import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.UserPurchaseDTO;
 import ru.ifmo.db.domain.guiServices.domainDTO.User;
 import ru.ifmo.db.domain.mappers.TransformerToDTO;
 import ru.ifmo.db.domain.mappers.TransformerToEntity;
@@ -35,10 +34,12 @@ public class UserManager implements Manager<User> {
     public void update(User obj) {
         client.updateUser(obj.getId(), TransformerToDTO.toUser(obj));
     }
-    public void buyFilm(int idUser, int idFilmCost){
-        client.addUserFilm(idUser,idFilmCost);
+
+    public void buyFilm(int idUser, int idFilmCost) {
+        client.addUserFilm(idUser, idFilmCost);
     }
-    public void buySubscription(int idUser, int idSubscriptionCost){
+
+    public void buySubscription(int idUser, int idSubscriptionCost) {
         client.addUserSubscription(idUser, idSubscriptionCost);
     }
 

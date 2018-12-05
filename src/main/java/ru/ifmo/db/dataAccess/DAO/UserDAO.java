@@ -1,4 +1,4 @@
-package ru.ifmo.db.dataAccess;
+package ru.ifmo.db.dataAccess.DAO;
 
 
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.UserDTO;

@@ -16,8 +16,8 @@ public class Client {
     private ObjectOutputStream out;
 
     public Client() {
-        int serverPort = 3567; // здесь обязательно нужно указать порт к которому привязывается сервер.
-        String address = "127.0.0.1"; // это IP-адрес компьютера, где исполняется наша серверная программа.
+        int serverPort = 3567;
+        String address = "127.0.0.1";
         try {
             InetAddress ipAddress = InetAddress.getByName(address);
             Socket socket = new Socket(ipAddress, serverPort);

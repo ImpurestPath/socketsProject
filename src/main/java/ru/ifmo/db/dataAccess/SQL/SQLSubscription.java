@@ -1,8 +1,8 @@
 package ru.ifmo.db.dataAccess.SQL;
 
 
-import ru.ifmo.db.dataAccess.SubscriptionCostDAO;
-import ru.ifmo.db.dataAccess.SubscriptionDAO;
+import ru.ifmo.db.dataAccess.DAO.SubscriptionCostDAO;
+import ru.ifmo.db.dataAccess.DAO.SubscriptionDAO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionDTO;
 

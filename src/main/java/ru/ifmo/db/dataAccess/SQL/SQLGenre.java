@@ -1,7 +1,7 @@
 package ru.ifmo.db.dataAccess.SQL;
 
 
-import ru.ifmo.db.dataAccess.GenreDAO;
+import ru.ifmo.db.dataAccess.DAO.GenreDAO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.GenreDTO;
 
 import java.sql.Connection;

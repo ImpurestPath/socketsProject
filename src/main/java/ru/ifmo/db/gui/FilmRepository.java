@@ -1,8 +1,11 @@
 package ru.ifmo.db.gui;
 
-import javafx.collections.FXCollections;
 import javafx.concurrent.Task;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.UserPurchaseDTO;
+import ru.ifmo.db.gui.entity.Actor;
+import ru.ifmo.db.gui.entity.Film;
+import ru.ifmo.db.gui.entity.Genre;
+import ru.ifmo.db.gui.entity.User;
 import ru.ifmo.db.gui.mappers.TransformerToEntity;
 import ru.ifmo.db.gui.mappers.TransformerToGUI;
 

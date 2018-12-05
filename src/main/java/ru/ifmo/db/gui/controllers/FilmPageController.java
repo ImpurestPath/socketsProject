@@ -3,7 +3,7 @@ package ru.ifmo.db.gui.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
-import ru.ifmo.db.gui.Film;
+import ru.ifmo.db.gui.entity.Film;
 
 import java.net.URL;
 import java.util.ResourceBundle;

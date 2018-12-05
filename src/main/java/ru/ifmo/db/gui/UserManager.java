@@ -1,9 +1,10 @@
 package ru.ifmo.db.gui;
 
 
-import ru.ifmo.db.domain.Cost;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.hasCost;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
+import ru.ifmo.db.gui.entity.User;
 import ru.ifmo.db.gui.mappers.TransformerToEntity;
 import ru.ifmo.db.gui.mappers.TransformerToGUI;
 
@@ -18,7 +19,7 @@ public class UserManager implements Manager<User> {
     public User getByName(String username) {
         return TransformerToGUI.toUser(client.get(username, ru.ifmo.db.domain.guiServices.domainDTO.User.class));
     }
-    public<T extends Cost> void buy(User user, T cost) throws Exception{
+    public<T extends hasCost> void buy(User user, T cost) throws Exception{
         if (cost.getClass() != FilmCostDTO.class && cost.getClass() != SubscriptionCostDTO.class) throw new Exception();
         if (user.getBalance() < cost.getCost()) throw new Exception();
         client.buy(user.getId(),cost);

@@ -1,10 +1,10 @@
-package ru.ifmo.db.gui;
+package ru.ifmo.db.gui.entity;
 
-public class Genre {
+public class Actor {
     private final int id;
     private final String name;
 
-    public Genre(int id, String name) {
+    public Actor(int id, String name) {
         this.id = id;
         this.name = name;
     }

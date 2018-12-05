@@ -1,8 +1,8 @@
 package ru.ifmo.db.dataAccess.SQL;
 
 
-import ru.ifmo.db.dataAccess.FilmCostDAO;
-import ru.ifmo.db.dataAccess.FilmDAO;
+import ru.ifmo.db.dataAccess.DAO.FilmCostDAO;
+import ru.ifmo.db.dataAccess.DAO.FilmDAO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmDTO;
 

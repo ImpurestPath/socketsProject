@@ -1,6 +1,6 @@
 package ru.ifmo.db.gui.mappers;
 
-import ru.ifmo.db.gui.*;
+import ru.ifmo.db.gui.entity.*;
 
 import java.util.ArrayList;
 import java.util.List;

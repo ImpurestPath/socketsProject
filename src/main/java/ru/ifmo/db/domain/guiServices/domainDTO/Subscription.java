@@ -5,7 +5,7 @@ import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
 import java.io.Serializable;
 import java.util.List;
 
-public class Subscription  implements Serializable,hasId {
+public class Subscription implements Serializable, hasId {
     private final int id;
     private final String name;
     private final List<Integer> films;

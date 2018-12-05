@@ -1,4 +1,4 @@
-package ru.ifmo.db.domain.guiServices;
+package ru.ifmo.db.domain.guiServices.managers;
 
 
 import ru.ifmo.db.domain.dataAccessServices.Client;

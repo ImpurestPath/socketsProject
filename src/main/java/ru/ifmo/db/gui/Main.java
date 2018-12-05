@@ -1,6 +1,7 @@
 package ru.ifmo.db.gui;
 
 import javafx.application.Application;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loading = new FXMLLoader(getClass().getResource("/fxml/loading.fxml"));
+
         FXMLLoader main = new FXMLLoader(getClass().getResource("/fxml/mainwindow.fxml"));
         Parent root = main.load();
         Client client = Client.getInstance();

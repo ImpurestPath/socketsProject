@@ -1,4 +1,4 @@
-package ru.ifmo.db.domain.guiServices;
+package ru.ifmo.db.domain.guiServices.managers;
 
 public interface Manager<T> {
     T getById(int id);

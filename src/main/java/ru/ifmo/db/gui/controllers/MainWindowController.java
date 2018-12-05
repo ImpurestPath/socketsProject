@@ -12,8 +12,8 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import ru.ifmo.db.gui.Actor;
-import ru.ifmo.db.gui.Film;
+import ru.ifmo.db.gui.entity.Actor;
+import ru.ifmo.db.gui.entity.Film;
 import ru.ifmo.db.gui.FilmRepository;
 import ru.ifmo.db.gui.UserManager;
 import ru.ifmo.db.gui.listCell.FilmListCell;
@@ -98,5 +98,22 @@ public class MainWindowController implements Initializable {
 
     public void btnMyFilmsClicked(ActionEvent actionEvent) {
         listViewFilms.setItems(FXCollections.observableArrayList(filmRepository.getUserFilms(userManager.getCurrent())));
+    }
+
+    public void btnMyProfileClicked(ActionEvent actionEvent) {
+        Stage info = new Stage();
+        info.initOwner(listViewFilms.getScene().getWindow());
+        info.initModality(Modality.APPLICATION_MODAL);
+        try {
+            FXMLLoader profile = new FXMLLoader(getClass().getResource("/fxml/user.fxml"));
+            Parent parent = profile.load();
+            info.setScene(new Scene(parent));
+            FilmInfoController filmInfoController = profile.getController();
+            filmInfoController.setFilm(item);
+            filmInfoController.setUserManager(userManager);
+            info.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

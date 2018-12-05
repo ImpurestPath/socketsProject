@@ -1,4 +1,4 @@
-package ru.ifmo.db.gui;
+package ru.ifmo.db.gui.entity;
 
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 

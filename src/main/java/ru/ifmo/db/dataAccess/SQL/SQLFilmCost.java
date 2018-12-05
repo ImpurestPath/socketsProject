@@ -1,7 +1,7 @@
 package ru.ifmo.db.dataAccess.SQL;
 
 
-import ru.ifmo.db.dataAccess.FilmCostDAO;
+import ru.ifmo.db.dataAccess.DAO.FilmCostDAO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 
 import java.sql.Connection;

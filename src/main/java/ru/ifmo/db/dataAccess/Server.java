@@ -1,6 +1,7 @@
 package ru.ifmo.db.dataAccess;
 
 
+import ru.ifmo.db.dataAccess.DAO.ConnectionDAO;
 import ru.ifmo.db.dataAccess.SQL.SQLConnection;
 
 import java.net.ServerSocket;
@@ -18,7 +19,7 @@ public class Server {
                 while (client == null) {
                     client = ss.accept();
                 }
-                System.out.println("New client");
+                System.out.println("New client" + client.getLocalAddress().toString());
                 Thread t = new ClientThread(client, connection);
                 t.run();
             }

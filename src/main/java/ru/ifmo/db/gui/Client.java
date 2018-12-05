@@ -1,6 +1,6 @@
 package ru.ifmo.db.gui;
 
-import ru.ifmo.db.domain.Cost;
+import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.hasCost;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.FilmCostDTO;
 import ru.ifmo.db.domain.dataAccessServices.dataAccessDTO.SubscriptionCostDTO;
 import ru.ifmo.db.domain.guiServices.domainDTO.*;
@@ -169,7 +169,7 @@ public class Client {
             return null;
         }
     }
-    public <T extends Cost> void buy(int idUser, T obj) throws Exception{
+    public <T extends hasCost> void buy(int idUser, T obj) throws Exception{
         if (obj.getClass() == FilmCostDTO.class){
             out.writeObject(ADD_USER_FILM);
             out.flush();
